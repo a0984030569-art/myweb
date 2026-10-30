@@ -49,32 +49,30 @@
     <section id="contact" class="card">
       <h2>🐾 聯絡我們 / 預約諮詢</h2>
       
-      <!-- 免費發信 API，直接在網頁端處理 -->
-      <form action="https://formsubmit.co/a0984030569@gmail.com" method="POST">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="【Pawffee Cafe】收到來自 GitHub 官網的全新聯絡訊息！">
+      <!-- 原生 Mailto 表單，直接觸發系統發信 -->
+      <form action="mailto:a0984030569@gmail.com" method="post" enctype="text/plain">
 
         <div class="form-group">
           <label>姓名 *</label>
-          <input type="text" name="姓名" required placeholder="請輸入您的姓名">
+          <input type="text" name="顧客姓名" required placeholder="請輸入您的姓名">
         </div>
 
         <div class="form-group">
           <label>電話 *</label>
-          <input type="tel" name="電話" required placeholder="例如：0912345678">
+          <input type="tel" name="聯絡電話" required placeholder="例如：0912345678">
         </div>
 
         <div class="form-group">
           <label>E-mail *</label>
-          <input type="email" name="Email" required placeholder="例如：yourname@email.com">
+          <input type="email" name="顧客Email" required placeholder="例如：yourname@email.com">
         </div>
 
         <div class="form-group">
           <label>聯絡內容 / 預約需求 *</label>
-          <textarea name="聯絡內容" rows="4" required placeholder="請輸入您的預約需求或諮詢內容..."></textarea>
+          <textarea name="預約與聯絡需求" rows="4" required placeholder="請輸入您的預約需求或諮詢內容..."></textarea>
         </div>
 
-        <button type="submit">送出訊息 📩</button>
+        <button type="submit">開啟郵件軟體寄出 📩</button>
       </form>
     </section>
 
