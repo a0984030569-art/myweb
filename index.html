@@ -1,50 +1,81 @@
-<section id="contact" class="card">
-  <h2>🐾 聯絡我們 / 預約諮詢</h2>
-  
-  <div class="form-group">
-    <label>姓名 *</label>
-    <input type="text" id="p_name" placeholder="請輸入您的姓名">
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawffee Cafe 寵物友善咖啡廳</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; margin: 0; padding: 0; }
+    body { background-color: #FAF6F0; color: #4A3E3D; line-height: 1.6; }
+    header { background-color: #6F4E37; color: white; padding: 1.5rem; text-align: center; }
+    nav { background-color: #8B5A2B; padding: 0.8rem; text-align: center; }
+    nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+    .container { max-width: 1000px; margin: 20px auto; padding: 20px; }
+    .card { background: white; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    h2 { color: #6F4E37; margin-bottom: 15px; border-bottom: 2px solid #E6D7C3; padding-bottom: 5px; }
+    
+    .form-group { margin-bottom: 15px; }
+    label { display: block; font-weight: bold; margin-bottom: 5px; color: #5C4033; }
+    input, textarea { width: 100%; padding: 10px; border: 1px solid #D3C5B5; border-radius: 6px; font-size: 14px; }
+    button { width: 100%; background-color: #8B5A2B; color: white; padding: 12px; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; }
+    button:hover { background-color: #6F4E37; }
+    
+    @media (max-width: 600px) {
+      nav a { display: block; margin: 8px 0; }
+      .container { padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🐾 Pawffee Cafe 寵物友善咖啡廳</h1>
+    <p>與毛孩一同享受美好下午茶時光</p>
+  </header>
+
+  <nav>
+    <a href="#about">關於我們</a>
+    <a href="#menu">精選菜單</a>
+    <a href="#contact">聯絡我們</a>
+  </nav>
+
+  <div class="container">
+    
+    <section id="about" class="card">
+      <h2>關於 Pawffee Cafe</h2>
+      <p>我們提供專為毛孩設計的健康鮮食，以及為主人準備的職人咖啡與手作甜點。店內環境舒適明亮，歡迎帶家中的毛寶貝一起來放鬆！</p>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>🐾 聯絡我們 / 預約諮詢</h2>
+      
+      <!-- 已填入你的專屬 Formspree 發信網址 -->
+      <form action="https://formspree.io/f/maeebrwz" method="POST">
+        <div class="form-group">
+          <label>姓名 *</label>
+          <input type="text" name="姓名" required placeholder="請輸入您的姓名">
+        </div>
+
+        <div class="form-group">
+          <label>電話 *</label>
+          <input type="tel" name="電話" required placeholder="例如：0912345678">
+        </div>
+
+        <div class="form-group">
+          <label>E-mail *</label>
+          <input type="email" name="Email" required placeholder="例如：yourname@email.com">
+        </div>
+
+        <div class="form-group">
+          <label>聯絡內容 / 預約需求 *</label>
+          <textarea name="聯絡內容" rows="4" required placeholder="請輸入您的預約需求或諮詢內容..."></textarea>
+        </div>
+
+        <button type="submit">送出訊息 📩</button>
+      </form>
+    </section>
+
   </div>
 
-  <div class="form-group">
-    <label>電話 *</label>
-    <input type="tel" id="p_phone" placeholder="例如：0912345678">
-  </div>
-
-  <div class="form-group">
-    <label>E-mail *</label>
-    <input type="email" id="p_email" placeholder="例如：yourname@email.com">
-  </div>
-
-  <div class="form-group">
-    <label>聯絡內容 / 預約需求 *</label>
-    <textarea id="p_message" rows="4" placeholder="請輸入您的預約需求或諮詢內容..."></textarea>
-  </div>
-
-  <button type="button" onclick="sendMailNow()">開啟郵件軟體寄出 📩</button>
-</section>
-
-<script>
-function sendMailNow() {
-  var name = document.getElementById("p_name").value.trim();
-  var phone = document.getElementById("p_phone").value.trim();
-  var email = document.getElementById("p_email").value.trim();
-  var message = document.getElementById("p_message").value.trim();
-
-  if(!name || !phone || !email || !message) {
-    alert("請填寫所有欄位！");
-    return;
-  }
-
-  var subject = encodeURIComponent("【Pawffee Cafe】來自官網的聯絡預約");
-  var body = encodeURIComponent(
-    "姓名：" + name + "\n" +
-    "電話：" + phone + "\n" +
-    "Email：" + email + "\n\n" +
-    "預約與聯絡需求：\n" + message
-  );
-
-  // 直接開啟系統郵件程式，不會跳出 Chrome 警告
-  window.location.href = "mailto:a0984030569@gmail.com?subject=" + subject + "&body=" + body;
-}
-</script>
+</body>
+</html>
