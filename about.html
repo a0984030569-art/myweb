@@ -95,7 +95,7 @@
 
         /* 內容容器 */
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 50px auto;
             padding: 0 20px;
         }
@@ -105,7 +105,7 @@
             border: 1px solid var(--border-color);
             border-radius: 20px;
             padding: 40px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             box-shadow: 0 4px 15px rgba(92, 64, 51, 0.05);
         }
 
@@ -142,6 +142,42 @@
 
         .manager-info {
             flex-grow: 1;
+        }
+
+        /* 溫馨入店公約格線排版 */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .rule-card {
+            background: var(--soft-cream);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .rule-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .rule-card h3 {
+            font-size: 1.1rem;
+            color: var(--accent-brown);
+            margin-bottom: 8px;
+        }
+
+        .rule-card p {
+            font-size: 0.9rem;
+            color: #7A5C58;
+            margin-bottom: 0;
         }
 
         /* 頁尾 */
@@ -193,15 +229,38 @@
 
         <!-- 毛店長介紹 -->
         <div class="section-box">
-            <h2>🐶 當家毛店長介紹</h2>
+            <h2>🐶 當家毛店長夥伴介紹</h2>
             <div class="manager-flex">
                 <img src="dog.jpg" alt="博美狗店長 巧克力" class="manager-img">
                 <div class="manager-info">
                     <p style="color: #D2691E; font-weight: 700; margin-bottom: 5px;">當家鎮店之寶</p>
-                    <h3 style="font-size: 1.4rem; color: var(--warm-brown); margin-bottom: 12px;">巧克力 (Chocolate)</h3>
+                    <h3 style="font-size: 1.4rem; color: var(--warm-brown); margin-bottom: 12px;">毛店長：巧克力 (Chocolate)</h3>
                     <p><strong>品種：</strong>博美犬 (Pomeranian)</p>
-                    <p><strong>特徵：</strong>圓滾滾亮眼、戴著標誌性心形彩色項鍊，蓬鬆毛茸茸。</p>
-                    <p><strong>個性：</strong>活潑親人、最喜歡討摸摸與巡桌接待客人，是大家的開心果！</p>
+                    <p><strong>特徵與個性：</strong>圓滾滾亮眼、戴著標誌性心形彩色項鍊，蓬鬆毛茸茸，活潑親人、最喜歡討摸摸與巡桌接待客人。</p>
+                    <p style="margin-top: 10px; font-style: italic; color: #D2691E;">店長的話：「汪！歡迎來到 Pawffee Cafe！店裡的狗狗餅乾跟鮮食甜點都是我的最愛，大家一定要帶毛寶貝來找我玩喔！」</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 溫馨入店公約 -->
+        <div class="section-box">
+            <h2>✨ Pawffee 溫馨入店公約</h2>
+            <p>為了讓每位客人與毛小孩都能享受舒適快樂的時光，請大家一起配合以下入店小公約：</p>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <img src="feature1.jpg" alt="禮貌帶與禮貌褲">
+                    <h3>1. 禮貌帶與禮貌褲</h3>
+                    <p>為了維護室內環境整潔，毛寶貝入內請配合穿著禮貌帶或禮貌褲喔！</p>
+                </div>
+                <div class="rule-card">
+                    <img src="feature2.jpg" alt="互相包容與尊重">
+                    <h3>2. 互相包容與尊重</h3>
+                    <p>每隻毛孩個性不同，來店互動請互相包容與尊重，快樂社交不受傷。</p>
+                </div>
+                <div class="rule-card">
+                    <img src="feature3.jpg" alt="維護環境清潔與安寧">
+                    <h3>3. 維護環境清潔與安寧</h3>
+                    <p>一同保持室內舒適清爽與良好安寧，讓大家都能享受美好的下午茶。</p>
                 </div>
             </div>
         </div>
