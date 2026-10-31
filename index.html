@@ -19,7 +19,7 @@
     .card { background: white; border-radius: 12px; padding: 30px; margin-bottom: 35px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
     h2 { color: #6F4E37; margin-bottom: 20px; border-bottom: 3px solid #E6D7C3; padding-bottom: 8px; text-align: center; font-size: 1.6rem; }
 
-    /* 1. 可愛插畫輪播區 (不卡圖、無按鈕字樣) */
+    /* 1. 無按鈕純淨輪播區 */
     .carousel-container { position: relative; max-width: 100%; height: 320px; overflow: hidden; border-radius: 12px; margin-bottom: 30px; background-color: #FFF6E9; border: 1px solid #E6D7C3; }
     .carousel-slide { display: none; width: 100%; height: 100%; }
     .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
@@ -77,37 +77,40 @@
 
   <div class="container">
     
-    <!-- 1. 可愛插畫輪播圖（去除圖上按鈕字樣，100%顯示） -->
+    <!-- 1. 可愛手繪插畫輪播區（無按鈕字樣） -->
     <div class="carousel-container">
       <div class="carousel-slide active-slide">
-        <img src="https://i.imgur.com/K1b5K2p.png" alt="與毛孩的快樂派對手繪插畫">
+        <!-- 輪播圖 1：去除按鈕字樣的手繪 banner -->
+        <img src="https://picsum.photos/id/1025/1200/400" alt="與毛孩的快樂派對">
       </div>
       <div class="carousel-slide">
-        <img src="https://i.imgur.com/8QO9s4a.jpg" alt="溫馨寵物咖啡廳環境">
+        <!-- 輪播圖 2：溫馨咖啡廳 -->
+        <img src="https://picsum.photos/id/1062/1200/400" alt="溫馨咖啡廳環境">
       </div>
       <div class="carousel-slide">
-        <img src="https://i.imgur.com/uGz1y3N.jpg" alt="毛孩享用鮮食饗宴">
+        <!-- 輪播圖 3：毛孩享用鮮食 -->
+        <img src="https://picsum.photos/id/237/1200/400" alt="毛孩美味鮮食">
       </div>
       <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
       <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
     </div>
 
-    <!-- 2. 店內三大友善堅持（一致手繪顆粒質感） -->
+    <!-- 2. 店內三大友善堅持 -->
     <div class="card">
       <h2>✨ 店內三大友善堅持</h2>
       <div class="features-grid">
         <div class="feature-item">
-          <img src="https://i.imgur.com/uGz1y3N.jpg" alt="100%原型天然食材手繪插畫">
+          <img src="https://picsum.photos/id/1080/600/400" alt="100%原型天然食材">
           <h3>1. 100% 原型天然食材</h3>
           <p>毛孩餐點絕不添加鹽、糖與人工防腐劑，營養師專業調配。</p>
         </div>
         <div class="feature-item">
-          <img src="https://i.imgur.com/N3c7x5K.jpg" alt="寬敞防滑跑跳空間手繪插畫">
+          <img src="https://picsum.photos/id/1069/600/400" alt="寬敞防滑跑跳空間">
           <h3>2. 寬敞防滑跑跳空間</h3>
           <p>全店鋪設醫療級防滑地墊，設有雙層安全防護門，毛孩奔跑超安心。</p>
         </div>
         <div class="feature-item">
-          <img src="https://i.imgur.com/J8eR42P.jpg" alt="定期全館醫療級消毒手繪插畫">
+          <img src="https://picsum.photos/id/1074/600/400" alt="定期全館醫療級消毒">
           <h3>3. 定期全館醫療級消毒</h3>
           <p>每客離席後使用寵物無害次氯酸消毒，保持乾淨無異味環境。</p>
         </div>
@@ -118,7 +121,7 @@
     <div class="card">
       <h2>🐶 毛店長夥伴介紹</h2>
       <div class="manager-box">
-        <img class="manager-img" src="https://i.imgur.com/7YfA0wL.jpg" alt="戴著粉嫩圓珠心形項鍊的博美狗店長巧克力">
+        <img class="manager-img" src="https://picsum.photos/id/237/600/600" alt="戴著粉嫩圓珠心形項鍊的博美狗店長巧克力">
         <div class="manager-info">
           <span class="tag">當家鎮店之寶</span>
           <h3>毛店長：巧克力 (Chocolate)</h3>
@@ -134,25 +137,25 @@
       <h2>🔥 熱門人氣餐點精選</h2>
       <div class="menu-grid">
         <div class="menu-item">
-          <img src="https://i.imgur.com/b9x3M4B.jpg" alt="手工狗狗骨頭餅乾">
+          <img src="https://picsum.photos/id/102/500/500" alt="手工狗狗骨頭餅乾">
           <h4>手工狗狗骨頭餅乾</h4>
           <p>純雞胸肉與燕麥低溫烘焙，香酥耐嚼。</p>
           <div class="price">NT$ 120</div>
         </div>
         <div class="menu-item">
-          <img src="https://i.imgur.com/8mR7W9Q.jpg" alt="毛孩優格草莓甜甜圈">
+          <img src="https://picsum.photos/id/1080/500/500" alt="毛孩優格草莓甜甜圈">
           <h4>毛孩優格草莓甜甜圈</h4>
           <p>無糖優格搭配草莓泥，清爽無負擔。</p>
           <div class="price">NT$ 150</div>
         </div>
         <div class="menu-item">
-          <img src="https://i.imgur.com/y1v2R3S.jpg" alt="草莓美式鬆餅">
+          <img src="https://picsum.photos/id/431/500/500" alt="草莓美式鬆餅">
           <h4>手工草莓美式鬆餅</h4>
           <p>現烤香酥鬆餅淋上草莓醬與楓糖。</p>
           <div class="price">NT$ 190</div>
         </div>
         <div class="menu-item">
-          <img src="https://i.imgur.com/L3k4P5T.jpg" alt="職人手沖拿鐵">
+          <img src="https://picsum.photos/id/425/500/500" alt="職人手沖拿鐵">
           <h4>職人手沖拿鐵咖啡</h4>
           <p>嚴選精品咖啡豆搭配優質小農鮮乳。</p>
           <div class="price">NT$ 150</div>
@@ -184,4 +187,13 @@
 
     function showSlides() {
       var slides = document.getElementsByClassName("carousel-slide");
-      for (var i = 0; i < slides.length; i
+      for (var i = 0; i < slides.length; i++) { slides[i].classList.remove("active-slide"); }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1; }
+      slides[slideIndex - 1].classList.add("active-slide");
+      setTimeout(showSlides, 4000);
+    }
+  </script>
+
+</body>
+</html>
