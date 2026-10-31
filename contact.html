@@ -9,16 +9,19 @@
     body { background-color: #FAF6F0; color: #4A3E3D; line-height: 1.6; }
     header { background-color: #6F4E37; color: white; padding: 2.5rem 1rem; text-align: center; }
     nav { background-color: #8B5A2B; padding: 12px; text-align: center; position: sticky; top: 0; z-index: 100; }
-    nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 1.1rem; }
+    nav a { color: white; text-decoration: none; margin: 0 12px; font-weight: bold; font-size: 1.05rem; }
     nav a:hover { color: #FFE4C4; text-decoration: underline; }
+    
     .container { max-width: 800px; margin: 30px auto; padding: 0 20px; }
     .card { background: white; border-radius: 12px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-    h2 { color: #6F4E37; margin-bottom: 20px; border-bottom: 2px solid #E6D7C3; padding-bottom: 5px; }
+    h2 { color: #6F4E37; margin-bottom: 20px; border-bottom: 3px solid #E6D7C3; padding-bottom: 8px; text-align: center; }
+    
     .form-group { margin-bottom: 18px; }
     label { display: block; font-weight: bold; margin-bottom: 6px; color: #5C4033; }
     input, textarea { width: 100%; padding: 12px; border: 1px solid #D3C5B5; border-radius: 6px; font-size: 15px; }
     button { width: 100%; background-color: #8B5A2B; color: white; padding: 14px; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; }
     button:hover { background-color: #6F4E37; }
+    
     footer { text-align: center; padding: 20px; background-color: #4A3E3D; color: white; margin-top: 40px; }
   </style>
 </head>
@@ -32,6 +35,7 @@
   <nav>
     <a href="index.html">首頁</a>
     <a href="about.html">關於我們</a>
+    <a href="menu.html">精選菜單</a>
     <a href="contact.html">聯絡我們</a>
   </nav>
 
@@ -39,7 +43,6 @@
     <div class="card">
       <h2>📩 聯絡我們 / 預約訂位</h2>
       
-      <!-- 已綁定你的 Formspree 專屬 ID -->
       <form action="https://formspree.io/f/maeebrwz" method="POST">
         <div class="form-group">
           <label>姓名 *</label>
