@@ -19,14 +19,11 @@
     .card { background: white; border-radius: 12px; padding: 30px; margin-bottom: 35px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
     h2 { color: #6F4E37; margin-bottom: 20px; border-bottom: 3px solid #E6D7C3; padding-bottom: 8px; text-align: center; font-size: 1.6rem; }
 
-    /* 1. 可愛輪播 Banner (不破圖，無按鈕標籤) */
-    .carousel-container { position: relative; max-width: 100%; height: 320px; overflow: hidden; border-radius: 12px; margin-bottom: 30px; background: linear-gradient(135deg, #FFF6E9, #FCE8D5); border: 2px solid #E6D7C3; }
-    .carousel-slide { display: none; width: 100%; height: 100%; text-align: center; padding: 35px 20px; }
-    .active-slide { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-    .banner-icon { font-size: 75px; margin-bottom: 10px; }
-    .banner-title { font-size: 1.8rem; color: #6F4E37; font-weight: bold; margin-bottom: 8px; }
-    .banner-sub { font-size: 1.05rem; color: #8B5A2B; max-width: 650px; }
-    
+    /* 1. 可愛輪播 Banner (無按鈕文字，去干擾) */
+    .carousel-container { position: relative; max-width: 100%; height: 320px; overflow: hidden; border-radius: 12px; margin-bottom: 30px; border: 1px solid #E6D7C3; }
+    .carousel-slide { display: none; width: 100%; height: 100%; }
+    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+    .active-slide { display: block; }
     .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(111, 78, 55, 0.7); color: white; border: none; padding: 12px 18px; font-size: 20px; cursor: pointer; border-radius: 50%; z-index: 10; }
     .carousel-btn:hover { background: rgba(111, 78, 55, 0.9); }
     .prev { left: 15px; }
@@ -34,23 +31,21 @@
 
     /* 2. 店內三大堅持 */
     .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 20px; }
-    .feature-item { background: #FFF9F0; padding: 25px; border-radius: 10px; border: 1px solid #E6D7C3; text-align: center; }
-    .feature-icon-box { width: 100%; height: 150px; background: #FFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 65px; margin-bottom: 12px; border: 1px solid #E6D7C3; }
+    .feature-item { background: #FFF9F0; padding: 20px; border-radius: 10px; border: 1px solid #E6D7C3; text-align: center; }
+    .feature-item img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; }
     .feature-item h3 { color: #8B5A2B; margin-bottom: 8px; }
 
-    /* 3. 當家博美狗店長「巧克力」專屬卡片 */
-    .manager-box { display: flex; flex-wrap: wrap; align-items: center; gap: 25px; background: #FFF9F0; border-radius: 12px; padding: 25px; border: 1px solid #E6D7C3; }
-    .manager-avatar { width: 220px; height: 220px; background: linear-gradient(135deg, #D98850, #B86B35); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; border: 6px solid #FFF; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin: 0 auto; text-align: center; }
-    .manager-avatar .dog-emoji { font-size: 80px; line-height: 1; }
-    .manager-avatar .necklace { font-size: 22px; margin-top: 5px; }
+    /* 3. 當家博美狗店長「巧克力」專屬高畫質卡片 */
+    .manager-box { display: flex; flex-wrap: wrap; align-items: center; gap: 25px; background: #FFF9F0; border-radius: 12px; padding: 20px; border: 1px solid #E6D7C3; }
+    .manager-img { flex: 1; min-width: 250px; height: 320px; object-fit: cover; border-radius: 10px; }
     .manager-info { flex: 2; min-width: 280px; }
-    .manager-info h3 { color: #8B5A2B; font-size: 1.5rem; margin-bottom: 10px; }
-    .tag { display: inline-block; background: #8B5A2B; color: white; padding: 4px 12px; border-radius: 15px; font-size: 0.85rem; margin-bottom: 10px; }
+    .manager-info h3 { color: #8B5A2B; font-size: 1.4rem; margin-bottom: 10px; }
+    .tag { display: inline-block; background: #8B5A2B; color: white; padding: 4px 10px; border-radius: 15px; font-size: 0.85rem; margin-bottom: 10px; }
 
     /* 4. 精選人氣餐點 */
     .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; margin-top: 15px; }
-    .menu-item { background: #FFF9F0; border-radius: 10px; padding: 20px; text-align: center; border: 1px solid #E6D7C3; }
-    .food-icon-box { width: 100%; aspect-ratio: 1 / 1; background: #FFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 70px; margin-bottom: 12px; border: 1px solid #E6D7C3; }
+    .menu-item { background: #FFF9F0; border-radius: 10px; padding: 15px; text-align: center; border: 1px solid #E6D7C3; }
+    .menu-item img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
     .menu-item h4 { color: #5C4033; font-size: 1.1rem; margin-bottom: 6px; }
     .menu-item p { font-size: 0.85rem; color: #666; margin-bottom: 10px; height: 38px; overflow: hidden; }
     .price { color: #D97706; font-weight: bold; font-size: 1.1rem; }
@@ -62,7 +57,7 @@
     @media (max-width: 600px) {
       nav a { display: inline-block; margin: 5px; font-size: 0.95rem; }
       .container { padding: 0 10px; }
-      .carousel-container { height: 260px; }
+      .carousel-container { height: 220px; }
     }
   </style>
 </head>
@@ -82,22 +77,16 @@
 
   <div class="container">
     
-    <!-- 1. 可愛插畫輪播區 (不破圖，去去除按鈕字樣) -->
+    <!-- 1. 可愛輪播 Banner (內建 SVG，絕不破圖，無按鈕字樣) -->
     <div class="carousel-container">
       <div class="carousel-slide active-slide">
-        <div class="banner-icon">🐾☕🎉</div>
-        <div class="banner-title">與毛孩的快樂派對！</div>
-        <div class="banner-sub">與毛寶貝一起享受最愜意的午後 💛 提供寵物友善餐點、專屬遊戲區與職人咖啡。</div>
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='400' viewBox='0 0 1200 400'><rect width='100%' height='100%' fill='%23FFF6E9'/><text x='50%' y='40%' font-size='70' text-anchor='middle' fill='%236F4E37'>🐾 Pawffee Party 🐾</text><text x='50%' y='65%' font-size='32' text-anchor='middle' fill='%238B5A2B'>與毛孩一起享受最愜意的下午茶時光</text></svg>" alt="Pawffee Party">
       </div>
       <div class="carousel-slide">
-        <div class="banner-icon">🏡🐶🐱</div>
-        <div class="banner-title">溫馨舒適的寵物空間</div>
-        <div class="banner-sub">全店醫療級防滑地墊，設有安全閘門，給毛孩最放心的跑跳環境。</div>
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='400' viewBox='0 0 1200 400'><rect width='100%' height='100%' fill='%23FCE8D5'/><text x='50%' y='40%' font-size='70' text-anchor='middle' fill='%236F4E37'>🌿 溫馨友善環境 🌿</text><text x='50%' y='65%' font-size='32' text-anchor='middle' fill='%238B5A2B'>醫療級防滑地墊 ✕ 雙層安全閘門</text></svg>" alt="溫馨友善環境">
       </div>
       <div class="carousel-slide">
-        <div class="banner-icon">🥞🍓🍰</div>
-        <div class="banner-title">主人現做甜點與毛孩鮮食</div>
-        <div class="banner-sub">專業營養師調配，100% 天然原型無添加美味鮮食。</div>
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='400' viewBox='0 0 1200 400'><rect width='100%' height='100%' fill='%23FFF0DF'/><text x='50%' y='40%' font-size='70' text-anchor='middle' fill='%236F4E37'>🥞 職人甜點 ✕ 寵物鮮食 🥩</text><text x='50%' y='65%' font-size='32' text-anchor='middle' fill='%238B5A2B'>100% 原型天然食材 無添加無負擔</text></svg>" alt="寵物鮮食與甜點">
       </div>
       <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
       <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
@@ -108,36 +97,33 @@
       <h2>✨ 店內三大友善堅持</h2>
       <div class="features-grid">
         <div class="feature-item">
-          <div class="feature-icon-box">🥗🥩</div>
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='280' viewBox='0 0 400 280'><rect width='100%' height='100%' fill='%23E6D7C3'/><text x='50%' y='45%' font-size='60' text-anchor='middle'>🥗🥩</text><text x='50%' y='75%' font-size='22' font-weight='bold' text-anchor='middle' fill='%236F4E37'>天然原型食材</text></svg>" alt="天然原型食材">
           <h3>1. 100% 原型天然食材</h3>
           <p>毛孩餐點絕不添加鹽、糖與人工防腐劑，營養師專業調配。</p>
         </div>
         <div class="feature-item">
-          <div class="feature-icon-box">🏃‍♂️🐕</div>
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='280' viewBox='0 0 400 280'><rect width='100%' height='100%' fill='%23E6D7C3'/><text x='50%' y='45%' font-size='60' text-anchor='middle'>🏃‍♂️🐕</text><text x='50%' y='75%' font-size='22' font-weight='bold' text-anchor='middle' fill='%236F4E37'>防滑安全空間</text></svg>" alt="防滑安全空間">
           <h3>2. 寬敞防滑跑跳空間</h3>
           <p>全店鋪設醫療級防滑地墊，設有雙層安全防護門，毛孩奔跑超安心。</p>
         </div>
         <div class="feature-item">
-          <div class="feature-icon-box">✨🧼</div>
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='280' viewBox='0 0 400 280'><rect width='100%' height='100%' fill='%23E6D7C3'/><text x='50%' y='45%' font-size='60' text-anchor='middle'>✨🧼</text><text x='50%' y='75%' font-size='22' font-weight='bold' text-anchor='middle' fill='%236F4E37'>醫療級消毒</text></svg>" alt="醫療級消毒">
           <h3>3. 定期全館醫療級消毒</h3>
           <p>每客離席後使用寵物無害次氯酸消毒，保持乾淨無異味環境。</p>
         </div>
       </div>
     </div>
 
-    <!-- 3. 毛店長夥伴「巧克力」 -->
+    <!-- 3. 當家博美狗店長「巧克力」專屬卡片 -->
     <div class="card">
       <h2>🐶 毛店長夥伴介紹</h2>
       <div class="manager-box">
-        <div class="manager-avatar">
-          <div class="dog-emoji">🐕</div>
-          <div class="necklace">📿💛</div>
-        </div>
+        <img class="manager-img" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='500' viewBox='0 0 400 500'><rect width='100%' height='100%' fill='%23D98850'/><circle cx='200' cy='200' r='120' fill='%23B86B35'/><text x='50%' y='42%' font-size='100' text-anchor='middle'>🐕</text><text x='50%' y='60%' font-size='35' text-anchor='middle'>📿💖</text><text x='50%' y='85%' font-size='28' font-weight='bold' text-anchor='middle' fill='%23FFFFFF'>店長：巧克力</text></svg>" alt="戴著心形項鍊的博美狗店長巧克力">
         <div class="manager-info">
           <span class="tag">當家鎮店之寶</span>
           <h3>毛店長：巧克力 (Chocolate)</h3>
           <p><strong>品種：</strong>博美犬 (Pomeranian)</p>
-          <p><strong>特徵與個性：</strong>毛茸茸茶色蓬鬆毛髮、圓滾滾大眼、戴著標誌性心形彩色圓珠項鍊。活潑親人、最喜歡討摸摸與巡桌接待客人。</p>
+          <p><strong>特徵與個性：</strong>圓滾滾亮眼、戴著標誌性心形彩色項鍊，蓬鬆毛茸茸，活潑親人、最喜歡討摸摸與巡桌接待客人。</p>
           <p><strong>店長的話：</strong>「汪！歡迎來到 Pawffee Cafe！店裡的狗狗餅乾跟鮮食甜點都是我的最愛，大家一定要帶毛寶貝來找我玩喔！」</p>
         </div>
       </div>
@@ -148,25 +134,25 @@
       <h2>🔥 熱門人氣餐點精選</h2>
       <div class="menu-grid">
         <div class="menu-item">
-          <div class="food-icon-box">🦴</div>
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'><rect width='100%' height='100%' fill='%23FFF9F0'/><text x='50%' y='55%' font-size='80' text-anchor='middle'>🦴</text></svg>" alt="手工狗狗骨頭餅乾">
           <h4>手工狗狗骨頭餅乾</h4>
           <p>純雞胸肉與燕麥低溫烘焙，香酥耐嚼。</p>
           <div class="price">NT$ 120</div>
         </div>
         <div class="menu-item">
-          <div class="food-icon-box">🍩</div>
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'><rect width='100%' height='100%' fill='%23FFF9F0'/><text x='50%' y='55%' font-size='80' text-anchor='middle'>🍩</text></svg>" alt="毛孩優格草莓甜甜圈">
           <h4>毛孩優格草莓甜甜圈</h4>
           <p>無糖優格搭配草莓泥，清爽無負擔。</p>
           <div class="price">NT$ 150</div>
         </div>
         <div class="menu-item">
-          <div class="food-icon-box">🧇</div>
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'><rect width='100%' height='100%' fill='%23FFF9F0'/><text x='50%' y='55%' font-size='80' text-anchor='middle'>🧇</text></svg>" alt="手工草莓美式鬆餅">
           <h4>手工草莓美式鬆餅</h4>
           <p>現烤香酥鬆餅淋上草莓醬與楓糖。</p>
           <div class="price">NT$ 190</div>
         </div>
         <div class="menu-item">
-          <div class="food-icon-box">☕</div>
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'><rect width='100%' height='100%' fill='%23FFF9F0'/><text x='50%' y='55%' font-size='80' text-anchor='middle'>☕</text></svg>" alt="職人手沖拿鐵咖啡">
           <h4>職人手沖拿鐵咖啡</h4>
           <p>嚴選精品咖啡豆搭配優質小農鮮乳。</p>
           <div class="price">NT$ 150</div>
