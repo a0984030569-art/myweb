@@ -20,19 +20,19 @@
     h2 { color: #6F4E37; margin-bottom: 20px; border-bottom: 3px solid #E6D7C3; padding-bottom: 8px; text-align: center; font-size: 1.6rem; }
 
     .story-section { display: flex; flex-wrap: wrap; align-items: center; gap: 25px; margin-top: 15px; }
-    .story-img { flex: 1; min-width: 280px; height: 280px; object-fit: cover; border-radius: 10px; }
-    .story-text { flex: 1; min-width: 280px; }
+    .story-icon { flex: 1; min-width: 200px; height: 200px; background: #FFF9F0; border: 2px dashed #8B5A2B; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 100px; }
+    .story-text { flex: 2; min-width: 280px; }
     .story-text h3 { color: #8B5A2B; font-size: 1.3rem; margin-bottom: 10px; }
 
     .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
     .value-card { background: #FFF9F0; border-radius: 10px; padding: 20px; text-align: center; border: 1px solid #E6D7C3; }
-    .value-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; }
+    .value-icon { font-size: 55px; margin-bottom: 10px; }
     .value-card h3 { color: #8B5A2B; font-size: 1.15rem; margin-bottom: 8px; }
     .value-card p { font-size: 0.9rem; color: #666; }
 
     .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
-    .rule-item { background: #FFF9F0; border-radius: 10px; padding: 15px; border: 1px solid #E6D7C3; }
-    .rule-item img { width: 100%; height: 140px; object-fit: cover; border-radius: 6px; margin-bottom: 10px; }
+    .rule-item { background: #FFF9F0; border-radius: 10px; padding: 15px; border: 1px solid #E6D7C3; text-align: center; }
+    .rule-icon { font-size: 45px; margin-bottom: 8px; }
     .rule-item h4 { color: #5C4033; font-size: 1.05rem; margin-bottom: 5px; }
     .rule-item p { font-size: 0.85rem; color: #666; }
 
@@ -64,7 +64,7 @@
     <div class="card">
       <h2>📖 我們的創辦故事</h2>
       <div class="story-section">
-        <img class="story-img" src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800" alt="溫馨咖啡廳環境">
+        <div class="story-icon">☕🐕</div>
         <div class="story-text">
           <h3>因為愛，所以打造這片美好空間</h3>
           <p>Pawffee Cafe 創立於 2026 年，起源於創辦人想帶著愛犬博美「巧克力」一起舒服喝咖啡的初心。我們發現市面上許多咖啡廳雖標榜寵物友善，卻缺乏適合毛孩的餐點與安全設備。</p>
@@ -79,17 +79,17 @@
       <h2>🌟 我們的三大核心承諾</h2>
       <div class="values-grid">
         <div class="value-card">
-          <img src="https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=600" alt="天然健康鮮食">
+          <div class="value-icon">🥦</div>
           <h3>1. 100% 天然無添加鮮食</h3>
           <p>所有毛孩餐點皆由寵物營養師研發，堅持不加鹽、糖與人工防腐劑，嚴選優質原型食材。</p>
         </div>
         <div class="value-card">
-          <img src="https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=600" alt="安全防護空間">
+          <div class="value-icon">🛡️</div>
           <h3>2. 專業級防滑與安全防護</h3>
           <p>全店鋪設醫療級防滑地墊，門口配置雙層防逃逸安全閘門，保護毛孩跑跳關節與安全。</p>
         </div>
         <div class="value-card">
-          <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=600" alt="溫馨社群聚會">
+          <div class="value-icon">🤝</div>
           <h3>3. 友善暖心的交流社群</h3>
           <p>定期舉辦毛孩生日派對與寵物照護講座，為毛爸毛媽們提供互相交流分享經驗的溫馨天地。</p>
         </div>
@@ -101,17 +101,17 @@
       <h2>🐾 Pawffee 溫馨入店公約</h2>
       <div class="rules-grid">
         <div class="rule-item">
-          <img src="https://images.pexels.com/photos/1254140/pexels-photo-1254140.jpeg?auto=compress&cs=tinysrgb&w=600" alt="毛孩公約 - 禮貌帶">
+          <div class="rule-icon">🩲</div>
           <h4>禮貌帶與禮貌褲</h4>
           <p>公狗室內請穿戴禮貌帶，公用區域維持乾淨環境。</p>
         </div>
         <div class="rule-item">
-          <img src="https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=600" alt="毛孩公約 - 牽繩不離手">
+          <div class="rule-icon">🦮</div>
           <h4>牽繩隨身不離手</h4>
           <p>離座或移動時請繫緊牽繩，確保每位毛孩的安全。</p>
         </div>
         <div class="rule-item">
-          <img src="https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg?auto=compress&cs=tinysrgb&w=600" alt="毛孩公約 - 相互尊重">
+          <div class="rule-icon">❤️</div>
           <h4>互相包容與尊重</h4>
           <p>互動前先詢問對方主人，讓每位貴賓與毛孩都能愉快用餐。</p>
         </div>
