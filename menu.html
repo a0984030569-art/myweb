@@ -1,143 +1,408 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pawffee Cafe - 完整美味菜單</title>
-  <style>
-    * { box-sizing: border-box; font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; margin: 0; padding: 0; }
-    body { background-color: #FAF6F0; color: #4A3E3D; line-height: 1.6; }
-    header { background-color: #6F4E37; color: white; padding: 2.5rem 1rem; text-align: center; }
-    nav { background-color: #8B5A2B; padding: 12px; text-align: center; position: sticky; top: 0; z-index: 100; }
-    nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 1.05rem; }
-    nav a:hover { color: #FFE4C4; text-decoration: underline; }
-    
-    .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
-    .card { background: white; border-radius: 12px; padding: 30px; margin-bottom: 35px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-    h2 { color: #6F4E37; margin-bottom: 20px; border-bottom: 3px solid #E6D7C3; padding-bottom: 8px; text-align: center; }
-    
-    .menu-category-title { color: #8B5A2B; border-left: 5px solid #8B5A2B; padding-left: 10px; margin: 30px 0 15px 0; font-size: 1.3rem; }
-    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; }
-    .menu-item { background: #FFF9F0; border-radius: 10px; padding: 15px; text-align: center; border: 1px solid #E6D7C3; }
-    .menu-item img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
-    .menu-item h4 { color: #5C4033; font-size: 1.1rem; margin-bottom: 6px; }
-    .menu-item p { font-size: 0.85rem; color: #666; margin-bottom: 10px; height: 38px; overflow: hidden; }
-    .price { color: #D97706; font-weight: bold; font-size: 1.1rem; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>完整菜單 - Pawffee Cafe 寵物友善咖啡廳</title>
+    <!-- Google Fonts 溫潤圓體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #FFB6C1;
+            --soft-cream: #FFFDF9;
+            --warm-brown: #5C4033;
+            --accent-brown: #8B5A2B;
+            --light-pink-bg: #FFF0F2;
+            --border-color: #E8D7D0;
+        }
 
-    footer { text-align: center; padding: 20px; background-color: #4A3E3D; color: white; margin-top: 40px; }
-  </style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Zen Maru Gothic', sans-serif;
+        }
+
+        body {
+            background-color: var(--soft-cream);
+            color: var(--warm-brown);
+            line-height: 1.6;
+        }
+
+        /* 導覽列 */
+        header {
+            background-color: var(--soft-cream);
+            border-bottom: 2px dashed var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-brown);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--warm-brown);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #FF69B4;
+        }
+
+        /* 頁面標題區 */
+        .page-header {
+            text-align: center;
+            padding: 50px 20px 30px;
+            background-color: var(--light-pink-bg);
+            border-bottom: 2px dashed var(--border-color);
+        }
+
+        .page-header h1 {
+            font-size: 2.2rem;
+            color: var(--accent-brown);
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: #7A5C58;
+            font-size: 1.1rem;
+        }
+
+        /* 菜單主內容 */
+        .menu-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .menu-section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: var(--accent-brown);
+            border-bottom: 2px solid var(--primary-pink);
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .menu-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            display: flex;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(92, 64, 51, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .menu-img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .menu-info {
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+        }
+
+        .menu-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--warm-brown);
+        }
+
+        .menu-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #D2691E;
+        }
+
+        .menu-desc {
+            font-size: 0.95rem;
+            color: #7A5C58;
+        }
+
+        /* 頁尾 */
+        footer {
+            background-color: var(--light-pink-bg);
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 2px dashed var(--border-color);
+            color: #7A5C58;
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>🐾 Pawffee Cafe 寵物友善咖啡廳</h1>
-    <p>豐富美味菜單，滿足您與毛孩的味蕾</p>
-  </header>
+    <!-- 導覽列 -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🐾 Pawffee Cafe</a>
+            <ul class="nav-links">
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="about.html">關於我們</a></li>
+                <li><a href="menu.html" class="active">完整菜單</a></li>
+                <li><a href="contact.html">聯絡我們</a></li>
+            </ul>
+        </div>
+    </header>
 
-  <nav>
-    <a href="index.html">首頁</a>
-    <a href="about.html">關於我們</a>
-    <a href="menu.html">完整菜單</a>
-    <a href="contact.html">聯絡我們</a>
-  </nav>
+    <!-- 頁面標題 -->
+    <section class="page-header">
+        <h1>Pawffee 嚴選菜單</h1>
+        <p>提供人類療癒餐點，也為毛小孩準備專屬健康美味！</p>
+    </section>
 
-  <div class="container">
-    <div class="card">
-      <h2>🍽️ 全館美味菜單 (Full Menu)</h2>
+    <!-- 菜單主內容 -->
+    <div class="menu-container">
 
-      <!-- 1. 寵物餐點 -->
-      <h3 class="menu-category-title">🐾 寵物專屬鮮食 (Pet Menu)</h3>
-      <div class="menu-grid">
-        <div class="menu-item">
-          <img src="https://picsum.photos/id/102/500/500" alt="手工狗狗骨頭餅乾">
-          <h4>手工狗狗骨頭餅乾</h4>
-          <p>純雞胸肉與燕麥低溫烘焙，香酥耐嚼。</p>
-          <div class="price">NT$ 120</div>
+        <!-- 1. 毛孩鮮食專區 -->
+        <div class="menu-section">
+            <h2 class="section-title">🐾 毛孩專屬鮮食區</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <img src="beef_ball.jpg" alt="蒸彩蔬特級牛肉丸" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-item-header">
+                            <span class="menu-name">蒸彩蔬特級牛肉丸</span>
+                            <span class="menu-price">NT$ 180</span>
+                        </div>
+                        <p class="menu-desc">嚴選低脂牛肉搭配新鮮彩蔬蒸煮，營養滿分又多汁。</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="cat_mousse.jpg" alt="貓咪嫩雞鮭魚慕斯" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-item-header">
+                            <span class="menu-name">貓咪嫩雞鮭魚慕斯</span>
+                            <span class="menu-price">NT$ 160</span>
+                        </div>
+                        <p class="menu-desc">細緻綿密的雞肉與鮭魚泥，貓咪界難抗拒的米其林級享受。</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="pet_cake.jpg" alt="手工特製蛋糕" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-item-header">
+                            <span class="menu-name">手工特製蛋糕 (需預訂)</span>
+                            <span class="menu-price">NT$ 320</span>
+                        </div>
+                        <p class="menu-desc">無添加鹽糖的寵物專用生日蛋糕，慶生派對首選。</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="goat_milk.jpg" alt="新鮮羊奶" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-item-header">
+                            <span class="menu-name">新鮮溫熱羊奶</span>
+                            <span class="menu-price">NT$ 100</span>
+                        </div>
+                        <p class="menu-desc">好吸收、低乳糖的溫暖羊奶，守護毛孩腸胃健康。</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="menu-item">
-          <img src="https://picsum.photos/id/1080/500/500" alt="毛孩優格草莓甜甜圈">
-          <h4>毛孩優格草莓甜甜圈</h4>
-          <p>無糖優格搭配草莓泥，清爽無負擔。</p>
-          <div class="price">NT$ 150</div>
-        </div>
-        <div class="menu-item">
-          <img src="https://picsum.photos/id/292/500/500" alt="蒸彩蔬牛肉丸">
-          <h4>蒸彩蔬特級牛肉丸</h4>
-          <p>紐西蘭草飼牛搭配胡蘿蔔與花椰菜。</p>
-          <div class="price">NT$ 180</div>
-        </div>
-        <div class="menu-item">
-          <img src="https://picsum.photos/id/219/500/500" alt="貓咪嫩雞鮭魚慕斯">
-          <h4>貓咪嫩雞鮭魚慕斯</h4>
-          <p>嚴選新鮮鮭魚與雞胸肉打成綿密慕斯。</p>
-          <div class="price">NT$ 160</div>
-        </div>
-      </div>
 
-      <!-- 2. 主人輕食甜點 -->
-      <h3 class="menu-category-title">🥪 主人美味輕食 (Human Food)</h3>
-      <div class="menu-grid">
-        <div class="menu-item">
-          <img src="https://picsum.photos/id/431/500/500" alt="草莓美式鬆餅">
-          <h4>手工草莓美式鬆餅</h4>
-          <p>現烤香酥鬆餅淋上草莓醬與純楓糖漿。</p>
-          <div class="price">NT$ 190</div>
+        <!-- 2. 人類主食與輕食 -->
+        <div class="menu-section">
+            <h2 class="section-title">🥪 人類主食與輕食</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <img src="souffle.jpg" alt="招牌莓果舒芙蕾鬆餅" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-item-header">
+                            <span class="menu-name">招牌莓果舒芙蕾鬆餅</span>
+                            <span class="menu-price">NT$ 260</span>
+                        </div>
+                        <p class="menu-desc">現點現做，口感鬆軟綿密，搭配酸甜新鮮莓果與鮮奶油。</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="avocado_sandwich.jpg" alt="招牌酪梨培根三明治" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-item-header">
+                            <span class="menu-name">招牌酪梨培根三明治</span>
+                            <span class="menu-price">NT$ 220</span>
+                        </div>
+                        <p class="menu-desc">烘烤酥脆的酸種麵包，夾入滑順酪梨與香脆培根，附薯條。</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="shrimp_clam_pasta.jpg" alt="鮮蝦蛤蜊義大利麵" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-item-header">
+                            <span class="menu-name">鮮蝦蛤蜊義大利麵</span>
+                            <span class="menu-price">NT$ 300</span>
+                        </div>
+                        <p class="menu-desc">滿滿新鮮大蝦與鮮甜蛤蜊，拌入濃郁蒜香清炒醬汁。</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="fried_platter.jpg" alt="炸物拼盤" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-item-header">
+                            <span class="menu-name">澎湃歡樂炸物拼盤</span>
+                            <span class="menu-price">NT$ 280</span>
+                        </div>
+                        <p class="menu-desc">包含薯條、黃金雞塊、香酥薯餅與Ｑ彈甜不辣，聚餐必點。</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="beef_risotto.jpg" alt="牛肉蔬食燉飯" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-item-header">
+                            <span class="menu-name">慢燉牛肉蔬食燉飯</span>
+                            <span class="menu-price">NT$ 340</span>
+                        </div>
+                        <p class="menu-desc">慢火細燉的嚴選牛肉塊，搭配豐富彩蔬與香濃義式燉飯。</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="daily_special.jpg" alt="每日限定蛋糕及湯品" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-item-header">
+                            <span class="menu-name">本日限定特製甜點與暖心湯品</span>
+                            <span class="menu-price">時價</span>
+                        </div>
+                        <p class="menu-desc">主廚手作限量蛋糕與當日暖心濃湯，詳情請詢問櫃檯。</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="menu-item">
-          <img src="https://picsum.photos/id/312/500/500" alt="酪梨培根三明治">
-          <h4>招牌酪梨培根三明治</h4>
-          <p>現烤香酥吐司搭配新鮮酪梨與煎培根。</p>
-          <div class="price">NT$ 220</div>
-        </div>
-        <div class="menu-item">
-          <img src="https://picsum.photos/id/1080/500/500" alt="巴斯克乳酪蛋糕">
-          <h4>濃郁巴斯克乳酪蛋糕</h4>
-          <p>表層焦香、內部綿密濃郁的經典甜點。</p>
-          <div class="price">NT$ 160</div>
-        </div>
-        <div class="menu-item">
-          <img src="https://picsum.photos/id/431/500/500" alt="比利時可頌鬆餅">
-          <h4>熱情焦糖可頌鬆餅</h4>
-          <p>現壓酥脆可頌鬆餅搭佐香醇焦糖醬。</p>
-          <div class="price">NT$ 180</div>
-        </div>
-      </div>
 
-      <!-- 3. 主人嚴選飲品 -->
-      <h3 class="menu-category-title">☕ 主人嚴選飲品 (Human Drinks)</h3>
-      <div class="menu-grid">
-        <div class="menu-item">
-          <img src="https://picsum.photos/id/425/500/500" alt="職人手沖拿鐵">
-          <h4>職人手沖拿鐵咖啡</h4>
-          <p>精品咖啡豆搭配小農鮮乳與精美拉花。</p>
-          <div class="price">NT$ 150</div>
+        <!-- 3. 咖啡與精選飲品 -->
+        <div class="menu-section">
+            <h2 class="section-title">☕ 咖啡與精選飲品</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <img src="latte.jpg" alt="香醇拿鐵咖啡" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-item-header">
+                            <span class="menu-name">香醇拿鐵咖啡</span>
+                            <span class="menu-price">NT$ 150</span>
+                        </div>
+                        <p class="menu-desc">滑順溫潤的奶香與濃縮咖啡完美融合，附精美拉花。</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="americano.jpg" alt="職人手沖美式咖啡" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-item-header">
+                            <span class="menu-name">職人手沖美式咖啡 (冰/熱)</span>
+                            <span class="menu-price">NT$ 130</span>
+                        </div>
+                        <p class="menu-desc">嚴選烘焙咖啡豆，口感香醇濃郁，可選冰或熱飲。</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="berry_sparkling.jpg" alt="繽紛莓果氣泡飲" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-item-header">
+                            <span class="menu-name">繽紛莓果氣泡飲</span>
+                            <span class="menu-price">NT$ 160</span>
+                        </div>
+                        <p class="menu-desc">酸甜清爽的綜合莓果醬結合暢快氣泡水，夏日解膩首選。</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="bobo_milktea.jpg" alt="台灣之光珍珠奶茶" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-item-header">
+                            <span class="menu-name">台灣之光珍珠奶茶</span>
+                            <span class="menu-price">NT$ 160</span>
+                        </div>
+                        <p class="menu-desc">經典香濃奶茶搭配Ｑ彈黑糖珍珠，經典不敗的好滋味。</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="affogato.jpg" alt="阿芙佳朵" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-item-header">
+                            <span class="menu-name">經典義式阿芙佳朵</span>
+                            <span class="menu-price">NT$ 170</span>
+                        </div>
+                        <p class="menu-desc">香草冰淇淋淋上熱騰騰濃縮咖啡，冰火交融的苦甜饗宴。</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="fruit_tea.jpg" alt="水果茶" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-item-header">
+                            <span class="menu-name">鮮果滿溢水果茶 (壺)</span>
+                            <span class="menu-price">NT$ 190</span>
+                        </div>
+                        <p class="menu-desc">以天然紅茶為基底，加入滿滿新鮮水果，果香四溢。</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="menu-item">
-          <img src="https://picsum.photos/id/1060/500/500" alt="粉桃色氣泡飲">
-          <h4>繽紛粉桃氣泡飲</h4>
-          <p>清爽微氣泡感搭配甜蜜粉紅水蜜桃果肉。</p>
-          <div class="price">NT$ 140</div>
-        </div>
-        <div class="menu-item">
-          <img src="https://picsum.photos/id/1060/500/500" alt="濃郁抹茶拿鐵">
-          <h4>靜岡抹茶鮮奶拿鐵</h4>
-          <p>日本靜岡抹茶粉搭配綿密鮮奶泡。</p>
-          <div class="price">NT$ 160</div>
-        </div>
-        <div class="menu-item">
-          <img src="https://picsum.photos/id/425/500/500" alt="西西里咖啡">
-          <h4>鮮檸西西里氣泡咖啡</h4>
-          <p>新鮮檸檬汁與濃縮咖啡交織清爽滋味。</p>
-          <div class="price">NT$ 150</div>
-        </div>
-      </div>
 
     </div>
-  </div>
 
-  <footer>
-    <p>© 2026 Pawffee Cafe | GitHub Pages</p>
-  </footer>
+    <!-- 頁尾 -->
+    <footer>
+        <p>&copy; 2026 Pawffee Cafe. All rights reserved. 🐾 帶著毛小孩來享受美好的午後時光吧！</p>
+    </footer>
 
 </body>
 </html>
