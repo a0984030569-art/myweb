@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pawffee Cafe - 寵物友善咖啡廳</title>
+  <title>Pawffee Cafe - 寵物友善咖啡廳首頁</title>
   <style>
     * { box-sizing: border-box; font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; margin: 0; padding: 0; }
     body { background-color: #FAF6F0; color: #4A3E3D; line-height: 1.6; }
-    header { background-color: #6F4E37; color: white; padding: 2.5rem 1rem; text-align: center; }
+    
+    header { background-color: #6F4E37; color: white; padding: 2rem 1rem; text-align: center; }
     header h1 { font-size: 2.2rem; margin-bottom: 8px; }
     
     nav { background-color: #8B5A2B; padding: 12px; text-align: center; position: sticky; top: 0; z-index: 100; }
@@ -15,16 +16,41 @@
     nav a:hover { color: #FFE4C4; text-decoration: underline; }
 
     .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
-    .card { background: white; border-radius: 12px; padding: 30px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-    h2 { color: #6F4E37; margin-bottom: 15px; border-bottom: 3px solid #E6D7C3; padding-bottom: 8px; }
+    .card { background: white; border-radius: 12px; padding: 30px; margin-bottom: 35px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    h2 { color: #6F4E37; margin-bottom: 20px; border-bottom: 3px solid #E6D7C3; padding-bottom: 8px; text-align: center; font-size: 1.6rem; }
 
-    .hero-img { width: 100%; height: 320px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; }
+    /* 1. 圖片輪播區 (Carousel) */
+    .carousel-container { position: relative; max-width: 100%; height: 380px; overflow: hidden; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .carousel-slide { display: none; width: 100%; height: 100%; }
+    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+    .active-slide { display: block; }
+    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(111, 78, 55, 0.7); color: white; border: none; padding: 12px 18px; font-size: 20px; cursor: pointer; border-radius: 50%; z-index: 10; }
+    .carousel-btn:hover { background: rgba(111, 78, 55, 0.9); }
+    .prev { left: 15px; }
+    .next { right: 15px; }
 
-    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 20px; }
-    .menu-item { background: #FFF9F0; border-radius: 8px; padding: 15px; text-align: center; border: 1px solid #E6D7C3; }
-    .menu-item img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; margin-bottom: 10px; }
-    .menu-item h3 { color: #8B5A2B; font-size: 1.1rem; margin-bottom: 5px; }
-    .menu-item p { font-size: 0.9rem; color: #666; margin-bottom: 8px; }
+    /* 2. 店內三大友善堅持 */
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 20px; }
+    .feature-item { background: #FFF9F0; padding: 20px; border-radius: 10px; border: 1px solid #E6D7C3; text-align: center; }
+    .feature-item img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; }
+    .feature-item h3 { color: #8B5A2B; margin-bottom: 8px; }
+
+    /* 3. 毛店長夥伴 */
+    .manager-box { display: flex; flex-wrap: wrap; align-items: center; gap: 25px; background: #FFF9F0; border-radius: 12px; padding: 20px; border: 1px solid #E6D7C3; }
+    .manager-img { flex: 1; min-width: 250px; height: 280px; object-fit: cover; border-radius: 10px; }
+    .manager-info { flex: 2; min-width: 280px; }
+    .manager-info h3 { color: #8B5A2B; font-size: 1.4rem; margin-bottom: 10px; }
+    .tag { display: inline-block; background: #8B5A2B; color: white; padding: 4px 10px; border-radius: 15px; font-size: 0.85rem; margin-bottom: 10px; }
+
+    /* 4. 菜單分頁與正方形卡片 */
+    .menu-category-title { color: #8B5A2B; border-left: 5px solid #8B5A2B; padding-left: 10px; margin: 30px 0 15px 0; font-size: 1.3rem; }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; }
+    .menu-item { background: #FFF9F0; border-radius: 10px; padding: 15px; text-align: center; border: 1px solid #E6D7C3; transition: transform 0.2s; }
+    .menu-item:hover { transform: translateY(-3px); }
+    /* 正方形圖片 */
+    .menu-item img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+    .menu-item h4 { color: #5C4033; font-size: 1.1rem; margin-bottom: 6px; }
+    .menu-item p { font-size: 0.85rem; color: #666; margin-bottom: 10px; height: 38px; overflow: hidden; }
     .price { color: #D97706; font-weight: bold; font-size: 1.1rem; }
 
     footer { text-align: center; padding: 20px; background-color: #4A3E3D; color: white; margin-top: 40px; }
@@ -32,7 +58,7 @@
     @media (max-width: 600px) {
       nav a { display: block; margin: 10px 0; }
       .container { padding: 0 10px; }
-      .hero-img { height: 200px; }
+      .carousel-container { height: 220px; }
     }
   </style>
 </head>
@@ -51,45 +77,175 @@
 
   <div class="container">
     
-    <div class="card">
-      <img class="hero-img" src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=1000" alt="寵物咖啡廳環境">
-      <h2>🏠 歡迎來到 Pawffee Cafe</h2>
-      <p>Pawffee Cafe 提供專為毛孩調配的無添加健康鮮食，以及為主人準備的現磨職人咖啡與手作甜點。店內擁有寬敞明亮寵物活動空間，是您與毛寶貝共度假日的最佳選擇！</p>
+    <!-- 1. 三張輪播圖片區 -->
+    <div class="carousel-container">
+      <div class="carousel-slide active-slide">
+        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=1000" alt="寵物咖啡廳環境">
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=1000" alt="可愛毛孩陪用餐">
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=1000" alt="毛孩專屬鮮食饗宴">
+      </div>
+      <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
+      <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
     </div>
 
+    <!-- 2. 店內三大友善堅持 -->
     <div class="card">
-      <h2>🐾 本週熱門精選餐點</h2>
+      <h2>✨ 店內三大友善堅持</h2>
+      <div class="features-grid">
+        <div class="feature-item">
+          <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500" alt="黃金獵犬 - 100%原型食材">
+          <h3>1. 100% 原型天然食材</h3>
+          <p>毛孩餐點絕不添加鹽、糖與人工防腐劑，營養師專業調配。</p>
+        </div>
+        <div class="feature-item">
+          <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=500" alt="柴犬 - 寬敞無障礙空間">
+          <h3>2. 寬敞防滑跑跳空間</h3>
+          <p>全店採用專業防滑地墊，設有雙層安全防防護門，毛孩奔跑超安心。</p>
+        </div>
+        <div class="feature-item">
+          <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500" alt="貓咪 - 寵物專屬清潔消毒">
+          <h3>3. 定期全館醫療級消毒</h3>
+          <p>每客離席後使用寵物無害次氯酸消毒，保持乾淨無異味環境。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 毛店長夥伴介紹 -->
+    <div class="card">
+      <h2>🐶 毛店長夥伴介紹</h2>
+      <div class="manager-box">
+        <img class="manager-img" src="https://images.unsplash.com/photo-1583511655826-05700d52f4d9?w=600" alt="毛店長博美狗巧克力">
+        <div class="manager-info">
+          <span class="tag">當家鎮店之寶</span>
+          <h3>毛店長：巧克力 (Chocolate)</h3>
+          <p><strong>品種：</strong>博美犬 (Pomeranian)</p>
+          <p><strong>個性：</strong>親人活潑、喜歡跟客人討摸摸、熱情巡桌。</p>
+          <p><strong>店長的話：</strong>「汪！歡迎來到 Pawffee Cafe！店裡的狗狗餅乾跟鮮食甜點都是我的最愛，大家一定要帶毛寶貝來找我玩喔！」</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. 精選菜單 (食物、飲料、寵物餐，每類 3-4 樣變化，正方形圖片) -->
+    <div class="card">
+      <h2>🍽️ 精選豐富菜單</h2>
+
+      <!-- A. 寵物專屬鮮食 (4樣變化，不同品種狗/貓插圖) -->
+      <h3 class="menu-category-title">🐾 寵物專屬餐點 (Pet Menu)</h3>
       <div class="menu-grid">
-        
         <div class="menu-item">
-          <img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?w=500" alt="狗狗耐嚼餅乾">
-          <h3>手工狗狗骨頭餅乾</h3>
-          <p>無糖無鹽，純雞胸肉與燕麥天然烘焙</p>
+          <img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?w=500" alt="柯基 - 手工骨頭餅乾">
+          <h4>手工狗狗骨頭餅乾</h4>
+          <p>純雞胸肉與燕麥低溫烘焙，香酥耐嚼。</p>
           <div class="price">NT$ 120</div>
         </div>
-
         <div class="menu-item">
-          <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=500" alt="草莓鮮食甜甜圈">
-          <h3>毛孩鮮食甜甜圈</h3>
-          <p>100% 原型食材，無糖優格與草莓泥製作</p>
+          <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=500" alt="法鬥 - 鮮食甜甜圈">
+          <h4>毛孩優格草莓甜甜圈</h4>
+          <p>無糖優格搭配草莓泥，清爽無負擔。</p>
           <div class="price">NT$ 150</div>
         </div>
-
         <div class="menu-item">
-          <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500" alt="職人拿鐵咖啡">
-          <h3>職人手沖拿鐵</h3>
-          <p>嚴選中深烘焙精品豆搭配優質鮮奶</p>
+          <img src="https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=500" alt="貴賓犬 - 鮮蔬牛肉丸">
+          <h4>蒸彩蔬特級牛肉丸</h4>
+          <p>紐西蘭草飼牛搭配胡蘿蔔與花椰菜。</p>
+          <div class="price">NT$ 180</div>
+        </div>
+        <div class="menu-item">
+          <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500" alt="貓咪 - 嫩雞鮭魚慕斯">
+          <h4>貓咪嫩雞鮭魚慕斯</h4>
+          <p>嚴選新鮮鮭魚與雞胸肉打成綿密慕斯。</p>
+          <div class="price">NT$ 160</div>
+        </div>
+      </div>
+
+      <!-- B. 主人輕食與甜點 (3樣變化) -->
+      <h3 class="menu-category-title">🥪 主人美味輕食 (Human Food)</h3>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=500" alt="酪梨培根三明治">
+          <h4>招牌酪梨培根三明治</h4>
+          <p>現烤香酥吐司搭配新鮮酪梨與煎培根。</p>
+          <div class="price">NT$ 220</div>
+        </div>
+        <div class="menu-item">
+          <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500" alt="美式鬆餅佐莓果">
+          <h4>手工手作美式鬆餅</h4>
+          <p>淋上純楓糖漿與新鮮綜合莓果。</p>
+          <div class="price">NT$ 190</div>
+        </div>
+        <div class="menu-item">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500" alt="巴斯克乳酪蛋糕">
+          <h4>濃郁巴斯克乳酪蛋糕</h4>
+          <p>表層焦香、內部綿密濃郁的經典甜點。</p>
+          <div class="price">NT$ 160</div>
+        </div>
+      </div>
+
+      <!-- C. 主人嚴選飲品 (3樣變化) -->
+      <h3 class="menu-category-title">☕ 主人嚴選飲品 (Human Drinks)</h3>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500" alt="職人手沖拿鐵">
+          <h4>職人手沖拿鐵咖啡</h4>
+          <p>精品咖啡豆搭配小農鮮乳與精美拉花。</p>
+          <div class="price">NT$ 150</div>
+        </div>
+        <div class="menu-item">
+          <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500" alt="水蜜桃氣泡飲">
+          <h4>繽紛氣泡水蜜桃飲</h4>
+          <p>清涼解渴的水蜜桃果肉與微氣泡感受。</p>
           <div class="price">NT$ 140</div>
         </div>
-
+        <div class="menu-item">
+          <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500" alt="靜岡抹茶拿鐵">
+          <h4>日式靜岡抹茶拿鐵</h4>
+          <p>嚴選日本靜岡抹茶粉，茶香濃郁順口。</p>
+          <div class="price">NT$ 160</div>
+        </div>
       </div>
+
     </div>
 
   </div>
 
   <footer>
-    <p>© 2026 Pawffee Cafe | GitHub Pages 期末網頁作業</p>
+    <p>© 2026 Pawffee Cafe | GitHub Pages</p>
   </footer>
+
+  <!-- 輪播圖 JavaScript 控制腳本 -->
+  <script>
+    var slideIndex = 0;
+    showSlides();
+
+    function moveSlide(n) {
+      showSpecificSlide(slideIndex += n);
+    }
+
+    function showSpecificSlide(n) {
+      var slides = document.getElementsByClassName("carousel-slide");
+      if (n >= slides.length) { slideIndex = 0; }
+      if (n < 0) { slideIndex = slides.length - 1; }
+      for (var i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active-slide");
+      }
+      slides[slideIndex].classList.add("active-slide");
+    }
+
+    function showSlides() {
+      var slides = document.getElementsByClassName("carousel-slide");
+      for (var i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active-slide");
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1; }
+      slides[slideIndex - 1].classList.add("active-slide");
+      setTimeout(showSlides, 4000); // 每 4 秒自動切換輪播
+    }
+  </script>
 
 </body>
 </html>
