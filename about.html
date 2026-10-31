@@ -1,105 +1,222 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>關於我們 - Pawffee Cafe 寵物友善咖啡廳</title>
-  <style>
-    * { box-sizing: border-box; font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; margin: 0; padding: 0; }
-    body { background-color: #FAF6F0; color: #4A3E3D; line-height: 1.6; }
-    
-    header { background-color: #6F4E37; color: white; padding: 2.5rem 1rem; text-align: center; }
-    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
-    
-    nav { background-color: #8B5A2B; padding: 12px; text-align: center; position: sticky; top: 0; z-index: 100; }
-    nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 1.05rem; }
-    nav a:hover { color: #FFE4C4; text-decoration: underline; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於我們 - Pawffee Cafe 寵物友善咖啡廳</title>
+    <!-- Google Fonts 溫潤圓體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #FFB6C1;
+            --soft-cream: #FFFDF9;
+            --warm-brown: #5C4033;
+            --accent-brown: #8B5A2B;
+            --light-pink-bg: #FFF0F2;
+            --border-color: #E8D7D0;
+        }
 
-    .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
-    .card { background: white; border-radius: 12px; padding: 30px; margin-bottom: 35px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-    h2 { color: #6F4E37; margin-bottom: 25px; border-bottom: 3px solid #E6D7C3; padding-bottom: 8px; text-align: center; font-size: 1.6rem; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Zen Maru Gothic', sans-serif;
+        }
 
-    /* 創店由來區域 */
-    .story-section { display: flex; flex-wrap: wrap; gap: 30px; align-items: center; margin-bottom: 40px; }
-    .story-img { flex: 1; min-width: 300px; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
-    .story-text { flex: 2; min-width: 300px; }
-    .story-text p { margin-bottom: 15px; color: #5C4033; }
+        body {
+            background-color: var(--soft-cream);
+            color: var(--warm-brown);
+            line-height: 1.6;
+        }
 
-    /* 三大核心承諾區域 */
-    .promise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-    .promise-item { background: #FFF9F0; padding: 25px; border-radius: 10px; border: 1px solid #E6D7C3; text-align: center; }
-    .promise-item img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .promise-item h3 { color: #8B5A2B; margin-bottom: 10px; font-size: 1.2rem; }
-    .promise-item p { font-size: 0.95rem; color: #666; }
+        /* 導覽列 */
+        header {
+            background-color: var(--soft-cream);
+            border-bottom: 2px dashed var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-    footer { text-align: center; padding: 20px; background-color: #4A3E3D; color: white; margin-top: 40px; }
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
 
-    @media (max-width: 768px) {
-      .story-section { flex-direction: column; text-align: center; }
-    }
-    @media (max-width: 600px) {
-      nav a { display: inline-block; margin: 5px; font-size: 0.95rem; }
-    }
-  </style>
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-brown);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--warm-brown);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #FF69B4;
+        }
+
+        /* 頁面標題區 */
+        .page-header {
+            text-align: center;
+            padding: 50px 20px 30px;
+            background-color: var(--light-pink-bg);
+            border-bottom: 2px dashed var(--border-color);
+        }
+
+        .page-header h1 {
+            font-size: 2.2rem;
+            color: var(--accent-brown);
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: #7A5C58;
+            font-size: 1.1rem;
+        }
+
+        /* 內容容器 */
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-box {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(92, 64, 51, 0.05);
+        }
+
+        .section-box h2 {
+            font-size: 1.6rem;
+            color: var(--accent-brown);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-pink);
+            padding-bottom: 8px;
+        }
+
+        .section-box p {
+            color: #7A5C58;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        /* 毛店長介紹區塊 */
+        .manager-flex {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .manager-img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 2px solid var(--primary-pink);
+            flex-shrink: 0;
+        }
+
+        .manager-info {
+            flex-grow: 1;
+        }
+
+        /* 頁尾 */
+        footer {
+            background-color: var(--light-pink-bg);
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 2px dashed var(--border-color);
+            color: #7A5C58;
+            font-size: 0.95rem;
+            margin-top: 60px;
+        }
+
+        .footer-info {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>🐾 關於我們</h1>
-    <p>認識 Pawffee Cafe 的誕生故事與核心理念</p>
-  </header>
-
-  <nav>
-    <a href="index.html">首頁</a>
-    <a href="about.html">關於我們</a>
-    <a href="menu.html">完整菜單</a>
-    <a href="contact.html">聯絡我們</a>
-  </nav>
-
-  <div class="container">
-    
-    <!-- 1. 創店由來 -->
-    <div class="card">
-      <h2>📖 創店由來：因為愛，所以黏在一起</h2>
-      <div class="story-section">
-        <img src="./about_story.jpg" alt="創店由來插畫：女孩與巧克力溫馨陪伴" class="story-img">
-        <div class="story-text">
-          <p>嗨！這裡是 Pawffee Cafe，我是店長巧克力的頭號粉絲，也是這裡的創辦人 —— <strong>Eva</strong>。</p>
-          <p>曾經，我只是一個每天埋首在數字堆裡的普通會計。每次出門上班，看著巧克力那雙依依不捨的大眼睛，心裡總是有千萬個捨不得。我心想：「難道我們人類的宿命就是上班，而毛孩的宿命就是在家癡癡地等嗎？」</p>
-          <p>不！我不要這種宿命！</p>
-          <p>於是，一個可愛又溫馨的念頭閃過：既然不能帶巧克力去無聊的辦公室，那我就開一間可以讓牠光明正大「巡店」、我也能天天陪在牠身邊的咖啡廳吧！</p>
-          <p>這就是 Pawffee Cafe 的由來。這裡不只是一間咖啡廳，更是我和巧克力（以及所有毛孩）的夢想樂園。我們致力於打造一個人寵皆宜的溫馨空間，讓您在品嚐美味咖啡的同時，也能享受毛孩在腳邊撒嬌的幸福時光。不用再說再見，因為我們創立的初衷，就是為了——天天黏在一起！🐾</p>
+    <!-- 導覽列 -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🐾 Pawffee Cafe</a>
+            <ul class="nav-links">
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="about.html" class="active">關於我們</a></li>
+                <li><a href="menu.html">完整菜單</a></li>
+                <li><a href="contact.html">聯絡我們</a></li>
+            </ul>
         </div>
-      </div>
+    </header>
+
+    <!-- 頁面標題 -->
+    <section class="page-header">
+        <h1>關於 Pawffee Cafe</h1>
+        <p>一個充滿咖啡香與毛孩笑聲的溫馨避風港</p>
+    </section>
+
+    <div class="container">
+
+        <!-- 創店故事 -->
+        <div class="section-box">
+            <h2>☕ 我們的創店初衷</h2>
+            <p>Pawffee Cafe 的誕生，源自於對毛小孩無條件的愛與陪伴。我們希望打造一個不只是「允許寵物進入」，而是真正「以寵物為主體」的溫暖空間。</p>
+            <p>在這裡，沒有拘束，只有滿滿的療癒。無論是帶著毛寶貝來度過下午茶時光，或是尋求一個放鬆心靈的角落，我們都誠摯歡迎您與牠們的到來。</p>
+        </div>
+
+        <!-- 毛店長介紹 -->
+        <div class="section-box">
+            <h2>🐶 當家毛店長介紹</h2>
+            <div class="manager-flex">
+                <img src="dog.jpg" alt="博美狗店長 巧克力" class="manager-img">
+                <div class="manager-info">
+                    <p style="color: #D2691E; font-weight: 700; margin-bottom: 5px;">當家鎮店之寶</p>
+                    <h3 style="font-size: 1.4rem; color: var(--warm-brown); margin-bottom: 12px;">巧克力 (Chocolate)</h3>
+                    <p><strong>品種：</strong>博美犬 (Pomeranian)</p>
+                    <p><strong>特徵：</strong>圓滾滾亮眼、戴著標誌性心形彩色項鍊，蓬鬆毛茸茸。</p>
+                    <p><strong>個性：</strong>活潑親人、最喜歡討摸摸與巡桌接待客人，是大家的開心果！</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <!-- 2. 三大核心承諾 -->
-    <div class="card">
-      <h2>💪 我們的三大核心承諾</h2>
-      <div class="promise-grid">
-        <div class="promise-item">
-          <img src="./about_promise1.jpg" alt="在地小農合作插畫">
-          <h3>1. 在地小農合作與友善環境</h3>
-          <p>我們堅持支持台灣在地小農，嚴選新鮮、當季的食材入菜，不僅確保美味與營養，更減少食物里程。店內也盡量使用環保餐具與減塑包裝，為地球盡一份心力，實踐永續經營的理念。</p>
+    <!-- 頁尾 -->
+    <footer>
+        <div class="footer-info">
+            <p><strong>營業時間：</strong>週二至週六 11:00 - 20:00（日一公休）</p>
+            <p><strong>聯絡電話：</strong>2345-6789</p>
+            <p><strong>店家地址：</strong>新北市板橋區貓掌路 88 號</p>
         </div>
-        <div class="promise-item">
-          <img src="./about_promise2.jpg" alt="專業防滑與全面消毒插畫">
-          <h3>2. 專業級防滑與安全防護及全面消毒</h3>
-          <p>毛孩的安全是我們的首要考量。全店鋪設專業醫療級防滑地墊，保護毛孩關節。我們更實施嚴格的清潔SOP，每日定期與客後全面消毒，使用寵物無害的清潔劑，確保環境衛生與健康。</p>
-        </div>
-        <div class="promise-item">
-          <img src="./about_promise3.jpg" alt="專屬寵物慶生派對插畫">
-          <h3>3. 專屬寵物慶生派對與客製化服務</h3>
-          <p>我們深知毛孩是家人，值得特別的慶祝！我們提供專業的寵物慶生派對包場服務，從特製寵物蛋糕、派對佈置到攝影紀錄都能客製化安排。無論是生日或紀念日，都歡迎來 Pawffee 創造珍貴回憶。</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <footer>
-    <p>© 2026 Pawffee Cafe | 寵物友善咖啡廳</p>
-  </footer>
+        <p>&copy; 2026 Pawffee Cafe | 寵物友善咖啡廳</p>
+    </footer>
 
 </body>
 </html>
