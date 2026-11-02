@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員專區與 AI 智能客服 - Pawffee Cafe</title>
+    <!-- Google Fonts 溫潤圓體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #FFB6C1;
+            --soft-cream: #FFFDF9;
+            --warm-brown: #5C4033;
+            --accent-brown: #8B5A2B;
+            --light-pink-bg: #FFF0F2;
+            --border-color: #E8D7D0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Zen Maru Gothic', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+        }
+
+        body {
+            background-color: var(--soft-cream);
+            color: var(--warm-brown);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--light-pink-bg);
+            color: var(--accent-brown);
+            padding: 2.5rem 1rem;
+            text-align: center;
+            border-bottom: 2px dashed var(--border-color);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #7A5C58;
+            font-size: 1.1rem;
+        }
+
+        nav {
+            background-color: var(--soft-cream);
+            border-bottom: 2px dashed var(--border-color);
+            padding: 12px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--warm-brown);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: #FF69B4;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 15px rgba(92, 64, 51, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            color: var(--accent-brown);
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--primary-pink);
+            padding-bottom: 8px;
+            text-align: center;
+            font-size: 1.6rem;
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .benefit-item {
+            background: var(--soft-cream);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .benefit-item h3 {
+            color: var(--accent-brown);
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+
+        .benefit-item p {
+            font-size: 0.95rem;
+            color: #7A5C58;
+        }
+
+        /* 模擬集點卡區塊 */
+        .stamp-card {
+            background: var(--light-pink-bg);
+            border: 2px dashed var(--primary-pink);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .stamp-grid {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .stamp {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--primary-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--accent-brown);
+            font-size: 0.9rem;
+        }
+
+        .stamp.active {
+            background-color: var(--primary-pink);
+            color: white;
+        }
+
+        /* AI 智能客服浮動視窗按鈕 */
+        .chat-toggle-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--primary-pink);
+            color: var(--warm-brown);
+            border: none;
+            border-radius: 50px;
+            padding: 14px 22px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(92, 64, 51, 0.2);
+            z-index: 1000;
+            transition: transform 0.2s, background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-toggle-btn:hover {
+            background-color: #ff9dae;
+            transform: scale(1.05);
+        }
+
+        /* 聊天室主框體 */
+        .chat-box {
+            position: fixed;
+            bottom: 95px;
+            right: 25px;
+            width: 340px;
+            height: 450px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(92, 64, 51, 0.15);
+            border: 2px solid var(--primary-pink);
+            display: none; /* 預設關閉 */
+            flex-direction: column;
+            z-index: 1000;
+            overflow: hidden;
+            animation: popUp 0.3s ease-out;
+        }
+
+        @keyframes popUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .chat-header {
+            background-color: var(--light-pink-bg);
+            padding: 15px;
+            font-weight: bold;
+            color: var(--accent-brown);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .chat-close {
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #7A5C58;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background-color: var(--soft-cream);
+            font-size: 0.9rem;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            line-height: 1.4;
+        }
+
+        .bot-msg {
+            background: white;
+            color: var(--warm-brown);
+            align-self: flex-start;
+            border: 1px solid var(--border-color);
+        }
+
+        .user-msg {
+            background: var(--primary-pink);
+            color: var(--warm-brown);
+            align-self: flex-end;
+            font-weight: 500;
+        }
+
+        .chat-footer {
+            padding: 12px;
+            background: white;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-footer input {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            outline: none;
+            font-size: 0.9rem;
+            font-family: 'Zen Maru Gothic', sans-serif;
+        }
+
+        .chat-footer button {
+            background-color: var(--primary-pink);
+            color: var(--warm-brown);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .chat-footer button:hover {
+            background-color: #ff9dae;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--light-pink-bg);
+            color: #7A5C58;
+            margin-top: 60px;
+            border-top: 2px dashed var(--border-color);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🐾 VIP 會員專區與智慧客服</h1>
+        <p>加入 Pawffee VIP，解鎖專屬優惠與 OMO 虛實整合體驗！</p>
+    </header>
+
+    <nav>
+        <a href="index.html">首頁</a>
+        <a href="about.html">關於我們</a>
+        <a href="menu.html">完整菜單</a>
+        <a href="contact.html">聯絡我們</a>
+        <a href="member.html" class="active">會員中心</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- 會員福利介紹 (CRM 概念) -->
+        <div class="card">
+            <h2>💎 Pawffee VIP 會員獨享權益</h2>
+            <p style="color: #7A5C58; text-align: center; margin-bottom: 15px;">我們透過 OMO（Online Merge Offline）會員系統，讓您線上集點、線下消費享受尊榮禮遇！</p>
+            <div class="benefit-grid">
+                <div class="benefit-item">
+                    <h3>🎁 入會即享好禮</h3>
+                    <p>註冊即贈毛孩專屬「手工骨頭餅乾」一份，免費帶寶貝來嚐鮮！</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>☕ 消費集點回饋</h3>
+                    <p>消費滿 100 元累積 1 點，集滿 10 點可直接折抵 150 元或兌換特製鮮食。</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>🎂 生日專屬蛋糕</h3>
+                    <p>毛小孩生日當月憑會員資格，預訂手工寵物慶生蛋糕享 85 折優惠！</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 數位集點卡展示 -->
+        <div class="card">
+            <h2>🎟️ 我的數位集點卡 (模擬預覽)</h2>
+            <div class="stamp-card">
+                <p style="font-weight: bold; color: var(--accent-brown);">目前累積點數：<strong>7 / 10 點</strong>（再消費 3 次即可兌換大獎！）</p>
+                <div class="stamp-grid">
+                    <div class="stamp active">1🐾</div>
+                    <div class="stamp active">2🐾</div>
+                    <div class="stamp active">3🐾</div>
+                    <div class="stamp active">4🐾</div>
+                    <div class="stamp active">5🐾</div>
+                    <div class="stamp active">6🐾</div>
+                    <div class="stamp active">7🐾</div>
+                    <div class="stamp">8</div>
+                    <div class="stamp">9</div>
+                    <div class="stamp">🎁</div>
+                </div>
+                <p style="font-size: 0.85rem; color: #7A5C58;">出示此畫面給櫃檯人員掃描即可完成集點與兌換。</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- AI 智能客服浮動按鈕 -->
+    <button class="chat-toggle-btn" onclick="toggleChat()">
+        💬 問問 AI 小幫手
+    </button>
+
+    <!-- AI 智能客服對話框 -->
+    <div id="chatBox" class="chat-box">
+        <div class="chat-header">
+            <span>🐾 Pawffee 智能客服小幫手</span>
+            <span class="chat-close" onclick="toggleChat()">&times;</span>
+        </div>
+        <div id="chatBody" class="chat-body">
+            <div class="message bot-msg">汪！我是 Pawffee 智能客服，請問有什麼我可以幫您的嗎？您可以問我關於「低消」、「狗狗餐點」或「預約」的問題喔！</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="userInput" placeholder="輸入您的問題..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">發送</button>
+        </div>
+    </div>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>&copy; 2026 Pawffee Cafe</p>
+    </footer>
+
+    <!-- AI 客服簡易互動 Script -->
+    <script>
+        function toggleChat() {
+            let box = document.getElementById('chatBox');
+            if (box.style.display === 'flex') {
+                box.style.display = 'none';
+            } else {
+                box.style.display = 'flex';
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function sendMessage() {
+            let input = document.getElementById('userInput');
+            let text = input.value.trim();
+            if (text === '') return;
+
+            let chatBody = document.getElementById('chatBody');
+
+            // 顯示使用者訊息
+            let userDiv = document.createElement('div');
+            userDiv.className = 'message user-msg';
+            userDiv.innerText = text;
+            chatBody.appendChild(userDiv);
+
+            input.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // 模擬 AI 智慧回覆邏輯
+            setTimeout(() => {
+                let botDiv = document.createElement('div');
+                botDiv.className = 'message bot-msg';
+                
+                let reply = "汪！這是一個很好的問題！您可以透過我們網站的「聯絡我們」頁面填寫預約表單，或是直接撥打電話 2345-6789 詢問喔！🐾";
+                
+                let lowerText = text.toLowerCase();
+                if (lowerText.includes('吃') || lowerText.includes('餐') || lowerText.includes('狗') || lowerText.includes('貓')) {
+                    reply = "我們有專屬的「毛孩專屬鮮食區」喔！包含手工骨頭餅乾、優格草莓甜甜圈與蒸彩蔬牛肉丸等，全部採用天然無添加食材，點擊「完整菜單」可以看詳細成分與熱量！";
+                } else if (lowerText.includes('低消') || lowerText.includes('錢') || lowerText.includes('多少')) {
+                    reply = "本店每人低消為一杯飲品或一份餐點，毛小孩沒有低消限制，但入內需要配合穿著禮貌帶或禮貌褲喔！";
+                } else if (lowerText.includes('時間') || lowerText.includes('營業') || lowerText.includes('公休')) {
+                    reply = "我們營業時間是週二至週六 11:00 - 20:00，日一固定公休！";
+                }
+
+                botDiv.innerText = reply;
+                chatBody.appendChild(botDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 600);
+        }
+    </script>
+
+</body>
+</html>
