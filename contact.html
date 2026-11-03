@@ -28,7 +28,6 @@
             line-height: 1.8;
         }
 
-        /* 導覽列維持原本風格 */
         nav {
             background-color: var(--card-bg);
             padding: 20px 40px;
@@ -62,7 +61,6 @@
             color: var(--primary-pink);
         }
 
-        /* 聯絡表單容器 */
         .contact-container {
             max-width: 650px;
             margin: 50px auto;
@@ -112,8 +110,7 @@
         }
 
         .form-group input:focus, 
-        .form-group textarea:focus, 
-        .form-group select:focus {
+        .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-pink);
             background-color: #FFFFFF;
@@ -136,11 +133,11 @@
             background-color: #D6956B;
         }
 
-        .note {
+        #result {
             text-align: center;
             margin-top: 15px;
-            font-size: 0.85rem;
-            color: #A3938A;
+            font-weight: bold;
+            color: var(--primary-pink);
         }
 
         footer {
@@ -155,7 +152,6 @@
 </head>
 <body>
 
-    <!-- 導覽列 -->
     <nav>
         <a href="index.html" class="logo">🐾 Pawffee Cafe</a>
         <ul>
@@ -165,34 +161,41 @@
         </ul>
     </nav>
 
-    <!-- 聯絡表單區塊 -->
     <div class="contact-container">
         <h1>聯絡我們與預約</h1>
-        <p class="subtitle">填寫下方表單，將您的訊息與預約需求直接發送給我們！</p>
+        <p class="subtitle">填寫下方表單，將您的預約直接傳送到管理員信箱！</p>
         
-        <form id="pawffee-contact-form" onsubmit="sendPawffeeMail(event)">
+        <!-- Web3Forms 專用表單 -->
+        <form action="https://api.web3forms.com/submit" method="POST" id="form">
+            
+            <!-- TODO: 請把下面這行裡的 YOUR_ACCESS_KEY 換成你在 Web3Forms 官網申請到的金鑰 -->
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+
             <div class="form-group">
                 <label for="name">您的姓名</label>
-                <input type="text" id="name" required placeholder="例如：林小姐">
+                <input type="text" id="name" name="name" required placeholder="例如：林小姐">
             </div>
 
             <div class="form-group">
                 <label for="email">您的電子信箱</label>
-                <input type="email" id="email" required placeholder="your_email@example.com">
+                <input type="email" id="email" name="email" required placeholder="your_email@example.com">
             </div>
 
             <div class="form-group">
                 <label for="phone">聯絡電話</label>
-                <input type="tel" id="phone" required placeholder="例如：0912-345-678">
+                <input type="tel" id="phone" name="phone" required placeholder="例如：0912-345-678">
             </div>
 
             <div class="form-group">
                 <label for="message">預約內容或想說的話</label>
-                <textarea id="message" rows="5" required placeholder="請輸入您想預約的時間、人數，或攜帶的毛小孩資訊..."></textarea>
+                <textarea id="message" name="message" rows="5" required placeholder="請輸入您想預約的時間、人數，或攜帶的毛小孩資訊..."></textarea>
             </div>
 
+            <!-- 隱藏欄位：讓信件主旨更清楚 -->
+            <input type="hidden" name="subject" value="【Pawffee Cafe 官網新預約通知】">
+
             <button type="submit" class="submit-btn">送出預約與訊息</button>
-            <div class="note">※ 點擊後將直接透過您的信箱將內容發送至咖啡廳管理員信箱。</div>
+            <div id="result"></div>
         </form>
     </div>
 
@@ -201,31 +204,39 @@
     </footer>
 
     <script>
-        function sendPawffeeMail(event) {
-            event.preventDefault();
+        const form = document.getElementById('form');
+        const result = document.getElementById('result');
 
-            // 你的咖啡廳管理員信箱
-            const adminEmail = "a0984030569@gmail.com";
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+            result.innerHTML = "正在透過伺服器發送信件...";
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const message = document.getElementById('message').value;
-
-            const subject = encodeURIComponent(`【Pawffee Cafe 官網訊息】來自 ${name} 的預約/聯絡`);
-            const body = encodeURIComponent(
-                `您好，咖啡廳管理者：\n\n` +
-                `收到來自 Pawffee Cafe 官網的新訊息：\n\n` +
-                `【姓名】${name}\n` +
-                `【Email】${email}\n` +
-                `【電話】${phone}\n` +
-                `【內容/預約資訊】\n${message}\n\n` +
-                `---\nPawffee Cafe 官方網站自動導向系統`
-            );
-
-            // 直接觸發原生信件寄送，收件人絕對是你，絕不漏信
-            window.location.href = `mailto:${adminEmail}?subject=${subject}&body=${body}`;
-        }
+            fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    let jsonResponse = await response.json();
+                    if (response.status == 200) {
+                        result.innerHTML = "✨ 發送成功！信件已確實寄到您的信箱！";
+                        form.reset();
+                    } else {
+                        console.log(jsonResponse);
+                        result.innerHTML = jsonResponse.message;
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    result.innerHTML = "❌ 發生錯誤，請稍後再試。";
+                });
+        });
     </script>
 
 </body>
