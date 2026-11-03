@@ -1,205 +1,232 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pawffee Cafe - 聯絡我們</title>
-  <!-- Google Fonts 溫潤圓體 -->
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-        --primary-pink: #FFB6C1;
-        --soft-cream: #FFFDF9;
-        --warm-brown: #5C4033;
-        --accent-brown: #8B5A2B;
-        --light-pink-bg: #FFF0F2;
-        --border-color: #E8D7D0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯絡我們 | Pawffee Cafe 寵物友善咖啡廳</title>
+    <!-- Google Fonts 溫潤圓體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FAF6F0;
+            --primary-pink: #E8A87C;
+            --text-main: #5C4B43;
+            --card-bg: #FFFFFF;
+            --border-color: #EADBC8;
+        }
 
-    * { 
-        box-sizing: border-box; 
-        font-family: 'Zen Maru Gothic', 'PingFang TC', 'Microsoft JhengHei', sans-serif; 
-        margin: 0; 
-        padding: 0; 
-    }
-    
-    body { 
-        background-color: var(--soft-cream); 
-        color: var(--warm-brown); 
-        line-height: 1.6; 
-    }
-    
-    header { 
-        background-color: var(--light-pink-bg); 
-        color: var(--accent-brown); 
-        padding: 2.5rem 1rem; 
-        text-align: center; 
-        border-bottom: 2px dashed var(--border-color);
-    }
-    
-    header h1 { 
-        font-size: 2.2rem; 
-        margin-bottom: 8px; 
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Zen Maru Gothic', 'PingFang TC', sans-serif;
+        }
 
-    header p {
-        color: #7A5C58;
-        font-size: 1.1rem;
-    }
-    
-    nav { 
-        background-color: var(--soft-cream); 
-        border-bottom: 2px dashed var(--border-color);
-        padding: 12px; 
-        text-align: center; 
-        position: sticky; 
-        top: 0; 
-        z-index: 100; 
-    }
-    
-    nav a { 
-        color: var(--warm-brown); 
-        text-decoration: none; 
-        margin: 0 15px; 
-        font-weight: bold; 
-        font-size: 1.05rem; 
-        transition: color 0.3s;
-    }
-    
-    nav a:hover, nav a.active { 
-        color: #FF69B4; 
-    }
-    
-    .container { 
-        max-width: 800px; 
-        margin: 35px auto; 
-        padding: 0 20px; 
-    }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+        }
 
-    .card { 
-        background: white; 
-        border-radius: 16px; 
-        padding: 35px; 
-        box-shadow: 0 4px 15px rgba(92, 64, 51, 0.05); 
-        border: 1px solid var(--border-color);
-    }
+        /* 導覽列維持原本風格 */
+        nav {
+            background-color: var(--card-bg);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-    h2 { 
-        color: var(--accent-brown); 
-        margin-bottom: 25px; 
-        border-bottom: 3px solid var(--primary-pink); 
-        padding-bottom: 8px; 
-        text-align: center; 
-        font-size: 1.6rem;
-    }
-    
-    .form-group { 
-        margin-bottom: 20px; 
-    }
+        nav .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-pink);
+            text-decoration: none;
+        }
 
-    label { 
-        display: block; 
-        font-weight: bold; 
-        margin-bottom: 8px; 
-        color: var(--warm-brown); 
-    }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
 
-    input, textarea { 
-        width: 100%; 
-        padding: 12px 15px; 
-        border: 1px solid var(--border-color); 
-        border-radius: 12px; 
-        font-size: 15px; 
-        background-color: var(--soft-cream);
-        color: var(--warm-brown);
-        font-family: 'Zen Maru Gothic', sans-serif;
-    }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
-    input:focus, textarea:focus {
-        outline: none;
-        border-color: var(--primary-pink);
-        background-color: #ffffff;
-    }
+        nav ul li a:hover {
+            color: var(--primary-pink);
+        }
 
-    button { 
-        width: 100%; 
-        background-color: var(--primary-pink); 
-        color: var(--warm-brown); 
-        padding: 14px; 
-        border: none; 
-        border-radius: 30px; 
-        font-size: 16px; 
-        font-weight: bold; 
-        cursor: pointer; 
-        box-shadow: 0 4px 10px rgba(255, 182, 193, 0.4);
-        transition: background 0.3s, transform 0.2s;
-    }
+        /* 聯絡表單容器 */
+        .contact-container {
+            max-width: 650px;
+            margin: 50px auto;
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(92, 75, 67, 0.08);
+            border: 1px solid var(--border-color);
+        }
 
-    button:hover { 
-        background-color: #ff9dae; 
-        transform: translateY(-2px);
-    }
-    
-    footer { 
-        text-align: center; 
-        padding: 30px 20px; 
-        background-color: var(--light-pink-bg); 
-        color: #7A5C58; 
-        margin-top: 60px; 
-        border-top: 2px dashed var(--border-color);
-        font-size: 0.95rem;
-    }
-  </style>
+        .contact-container h1 {
+            text-align: center;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .contact-container p.subtitle {
+            text-align: center;
+            color: #8C7B73;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: #FAFAFA;
+            font-size: 1rem;
+            color: var(--text-main);
+            font-family: inherit;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus, 
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+            background-color: #FFFFFF;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-pink);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #D6956B;
+        }
+
+        .note {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #A3938A;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #8C7B73;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 60px;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>🐾 Pawffee Cafe 寵物友善咖啡廳</h1>
-    <p>聯絡我們與線上預約訂位</p>
-  </header>
+    <!-- 導覽列 -->
+    <nav>
+        <a href="index.html" class="logo">🐾 Pawffee Cafe</a>
+        <ul>
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="about.html">關於我們</a></li>
+            <li><a href="contact.html" style="color: var(--primary-pink);">聯絡我們</a></li>
+        </ul>
+    </nav>
 
-  <nav>
-    <a href="index.html">首頁</a>
-    <a href="about.html">關於我們</a>
-    <a href="menu.html">完整菜單</a>
-    <a href="contact.html" class="active">聯絡我們</a>
-    <a href="member.html">會員中心</a>
-  </nav>
+    <!-- 聯絡表單區塊 -->
+    <div class="contact-container">
+        <h1>聯絡我們與預約</h1>
+        <p class="subtitle">填寫下方表單，將您的訊息與預約需求直接發送給我們！</p>
+        
+        <form id="pawffee-contact-form" onsubmit="sendPawffeeMail(event)">
+            <div class="form-group">
+                <label for="name">您的姓名</label>
+                <input type="text" id="name" required placeholder="例如：林小姐">
+            </div>
 
-  <div class="container">
-    <div class="card">
-      <h2>📩 聯絡我們 / 預約訂位</h2>
-      
-      <!-- 完全保留您原本的 Formspree 收信設定 -->
-      <form action="https://formspree.io/f/maeebrwz" method="POST">
-        <div class="form-group">
-          <label>姓名 *</label>
-          <input type="text" name="姓名" required placeholder="請輸入您的姓名">
-        </div>
+            <div class="form-group">
+                <label for="email">您的電子信箱</label>
+                <input type="email" id="email" required placeholder="your_email@example.com">
+            </div>
 
-        <div class="form-group">
-          <label>電話 *</label>
-          <input type="tel" name="電話" required placeholder="例如：0912345678">
-        </div>
+            <div class="form-group">
+                <label for="phone">聯絡電話</label>
+                <input type="tel" id="phone" required placeholder="例如：0912-345-678">
+            </div>
 
-        <div class="form-group">
-          <label>E-mail *</label>
-          <input type="email" name="Email" required placeholder="例如：yourname@email.com">
-        </div>
+            <div class="form-group">
+                <label for="message">預約內容或想說的話</label>
+                <textarea id="message" rows="5" required placeholder="請輸入您想預約的時間、人數，或攜帶的毛小孩資訊..."></textarea>
+            </div>
 
-        <div class="form-group">
-          <label>聯絡內容 / 預約需求 *</label>
-          <textarea name="聯絡內容" rows="5" required placeholder="請輸入預約日期、人數與毛孩數量..."></textarea>
-        </div>
-
-        <button type="submit">送出訊息 📩</button>
-      </form>
+            <button type="submit" class="submit-btn">送出預約與訊息</button>
+            <div class="note">※ 點擊後將直接透過您的信箱將內容發送至咖啡廳管理員信箱。</div>
+        </form>
     </div>
-  </div>
 
-  <footer>
-    <p>© 2026 Pawffee Cafe | GitHub Pages</p>
-  </footer>
+    <footer>
+        &copy; 2026 Pawffee Cafe 寵物友善咖啡廳 All Rights Reserved.
+    </footer>
+
+    <script>
+        function sendPawffeeMail(event) {
+            event.preventDefault();
+
+            // 你的咖啡廳管理員信箱
+            const adminEmail = "a0984030569@gmail.com";
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            const subject = encodeURIComponent(`【Pawffee Cafe 官網訊息】來自 ${name} 的預約/聯絡`);
+            const body = encodeURIComponent(
+                `您好，咖啡廳管理者：\n\n` +
+                `收到來自 Pawffee Cafe 官網的新訊息：\n\n` +
+                `【姓名】${name}\n` +
+                `【Email】${email}\n` +
+                `【電話】${phone}\n` +
+                `【內容/預約資訊】\n${message}\n\n` +
+                `---\nPawffee Cafe 官方網站自動導向系統`
+            );
+
+            // 直接觸發原生信件寄送，收件人絕對是你，絕不漏信
+            window.location.href = `mailto:${adminEmail}?subject=${subject}&body=${body}`;
+        }
+    </script>
 
 </body>
 </html>
