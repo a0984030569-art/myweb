@@ -28,6 +28,7 @@
             line-height: 1.8;
         }
 
+        /* 統一的高質感導覽列 */
         nav {
             background-color: var(--card-bg);
             padding: 20px 40px;
@@ -35,6 +36,7 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px rgba(92, 75, 67, 0.03);
         }
 
         nav .logo {
@@ -42,18 +44,20 @@
             font-weight: 700;
             color: var(--primary-pink);
             text-decoration: none;
+            letter-spacing: 1px;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 30px;
         }
 
         nav ul li a {
             text-decoration: none;
             color: var(--text-main);
             font-weight: 500;
+            font-size: 1rem;
             transition: color 0.3s;
         }
 
@@ -61,6 +65,13 @@
             color: var(--primary-pink);
         }
 
+        /* 當前頁面的高亮樣式 (粉色標示) */
+        nav ul li a.active {
+            color: var(--primary-pink);
+            font-weight: 700;
+        }
+
+        /* 聯絡表單區塊 */
         .contact-container {
             max-width: 650px;
             margin: 50px auto;
@@ -151,22 +162,24 @@
 </head>
 <body>
 
+    <!-- 統一的 5 個功能選單導覽列 -->
     <nav>
         <a href="index.html" class="logo">🐾 Pawffee Cafe</a>
         <ul>
             <li><a href="index.html">首頁</a></li>
             <li><a href="about.html">關於我們</a></li>
-            <li><a href="contact.html" style="color: var(--primary-pink);">聯絡我們</a></li>
+            <li><a href="menu.html">完整菜單</a></li>
+            <li><a href="contact.html" class="active">聯絡我們</a></li>
+            <li><a href="member.html">會員中心</a></li>
         </ul>
     </nav>
 
+    <!-- 聯絡與預約表單主體 -->
     <div class="contact-container">
         <h1>聯絡我們與預約</h1>
         <p class="subtitle">填寫下方表單，訊息將直接發送到管理員信箱！</p>
         
-        <!-- 背景非同步發送表單 -->
         <form id="ajax-form">
-            <!-- 隱欄位設定收件人與不跳轉網頁 -->
             <input type="hidden" name="_subject" value="【Pawffee Cafe】收到新的預約與聯絡訊息！">
             <input type="hidden" name="_template" value="table">
 
