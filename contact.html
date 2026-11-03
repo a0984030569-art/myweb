@@ -97,8 +97,7 @@
         }
 
         .form-group input, 
-        .form-group textarea, 
-        .form-group select {
+        .form-group textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid var(--border-color);
@@ -133,11 +132,45 @@
             background-color: #D6956B;
         }
 
-        #result {
+        /* 成功彈窗區塊 */
+        .success-modal {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #F4ECE1;
+            border: 2px solid var(--primary-pink);
+            border-radius: 12px;
             text-align: center;
-            margin-top: 15px;
-            font-weight: bold;
+        }
+
+        .success-modal h3 {
             color: var(--primary-pink);
+            margin-bottom: 10px;
+        }
+
+        .success-modal p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            white-space: pre-line;
+            text-align: left;
+            background: #FFF;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .copy-btn {
+            background-color: var(--text-main);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .copy-btn:hover {
+            background-color: #3C2F2B;
         }
 
         footer {
@@ -163,81 +196,27 @@
 
     <div class="contact-container">
         <h1>聯絡我們與預約</h1>
-        <p class="subtitle">填寫下方表單，將您的預約直接傳送到管理員信箱！</p>
+        <p class="subtitle">填寫下方表單，將預約資訊直接送達您的管理員信箱！</p>
         
-        <!-- Web3Forms 專用表單 -->
-        <form action="https://api.web3forms.com/submit" method="POST" id="form">
-            
-            <!-- TODO: 請把下面這行裡的 YOUR_ACCESS_KEY 換成你在 Web3Forms 官網申請到的金鑰 -->
-            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
-
+        <form id="contact-form" onsubmit="handleMailSubmit(event)">
             <div class="form-group">
                 <label for="name">您的姓名</label>
-                <input type="text" id="name" name="name" required placeholder="例如：林小姐">
+                <input type="text" id="name" required placeholder="例如：k小姐">
             </div>
 
             <div class="form-group">
                 <label for="email">您的電子信箱</label>
-                <input type="email" id="email" name="email" required placeholder="your_email@example.com">
+                <input type="email" id="email" required placeholder="your_email@example.com">
             </div>
 
             <div class="form-group">
                 <label for="phone">聯絡電話</label>
-                <input type="tel" id="phone" name="phone" required placeholder="例如：0912-345-678">
+                <input type="tel" id="phone" required placeholder="例如：0900-345-678">
             </div>
 
             <div class="form-group">
                 <label for="message">預約內容或想說的話</label>
-                <textarea id="message" name="message" rows="5" required placeholder="請輸入您想預約的時間、人數，或攜帶的毛小孩資訊..."></textarea>
+                <textarea id="message" rows="5" required placeholder="請輸入您想預約的時間、人數，或攜帶的毛小孩資訊..."></textarea>
             </div>
 
-            <!-- 隱藏欄位：讓信件主旨更清楚 -->
-            <input type="hidden" name="subject" value="【Pawffee Cafe 官網新預約通知】">
-
-            <button type="submit" class="submit-btn">送出預約與訊息</button>
-            <div id="result"></div>
-        </form>
-    </div>
-
-    <footer>
-        &copy; 2026 Pawffee Cafe 寵物友善咖啡廳 All Rights Reserved.
-    </footer>
-
-    <script>
-        const form = document.getElementById('form');
-        const result = document.getElementById('result');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(form);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
-            result.innerHTML = "正在透過伺服器發送信件...";
-
-            fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: json
-                })
-                .then(async (response) => {
-                    let jsonResponse = await response.json();
-                    if (response.status == 200) {
-                        result.innerHTML = "✨ 發送成功！信件已確實寄到您的信箱！";
-                        form.reset();
-                    } else {
-                        console.log(jsonResponse);
-                        result.innerHTML = jsonResponse.message;
-                    }
-                })
-                .catch(error => {
-                    console.log(error);
-                    result.innerHTML = "❌ 發生錯誤，請稍後再試。";
-                });
-        });
-    </script>
-
-</body>
-</html>
+            <button type="submit" class
