@@ -9,10 +9,11 @@
     <style>
         :root {
             --bg-color: #FAF6F0;
-            --primary-pink: #E8A87C;
+            --primary-pink: #E88CA0;      /* 調整為溫柔浪漫的粉色系 */
+            --primary-hover: #D77A90;     /* 粉色 hover 色 */
             --text-main: #5C4B43;
             --card-bg: #FFFFFF;
-            --border-color: #EADBC8;
+            --border-color: #F3D9DE;      /* 粉嫩柔和邊框 */
         }
 
         * {
@@ -28,7 +29,7 @@
             line-height: 1.8;
         }
 
-        /* 統一的高質感導覽列 */
+        /* 統一的粉嫩高質感導覽列 */
         nav {
             background-color: var(--card-bg);
             padding: 20px 40px;
@@ -36,7 +37,7 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border-color);
-            box-shadow: 0 2px 10px rgba(92, 75, 67, 0.03);
+            box-shadow: 0 2px 10px rgba(232, 140, 160, 0.05);
         }
 
         nav .logo {
@@ -65,7 +66,7 @@
             color: var(--primary-pink);
         }
 
-        /* 當前頁面的高亮樣式 (粉色標示) */
+        /* 當前頁面保持粉色高亮 */
         nav ul li a.active {
             color: var(--primary-pink);
             font-weight: 700;
@@ -78,7 +79,7 @@
             background-color: var(--card-bg);
             padding: 40px;
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(92, 75, 67, 0.08);
+            box-shadow: 0 10px 30px rgba(232, 140, 160, 0.08);
             border: 1px solid var(--border-color);
         }
 
@@ -140,7 +141,7 @@
         }
 
         .submit-btn:hover {
-            background-color: #D6956B;
+            background-color: var(--primary-hover);
         }
 
         #form-status {
@@ -162,7 +163,7 @@
 </head>
 <body>
 
-    <!-- 統一的 5 個功能選單導覽列 -->
+    <!-- 統一的粉嫩 5 個功能選單導覽列 -->
     <nav>
         <a href="index.html" class="logo">🐾 Pawffee Cafe</a>
         <ul>
