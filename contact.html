@@ -132,47 +132,6 @@
             background-color: #D6956B;
         }
 
-        /* 成功彈窗區塊 */
-        .success-modal {
-            display: none;
-            margin-top: 25px;
-            padding: 20px;
-            background-color: #F4ECE1;
-            border: 2px solid var(--primary-pink);
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .success-modal h3 {
-            color: var(--primary-pink);
-            margin-bottom: 10px;
-        }
-
-        .success-modal p {
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-            color: var(--text-main);
-            white-space: pre-line;
-            text-align: left;
-            background: #FFF;
-            padding: 10px;
-            border-radius: 6px;
-        }
-
-        .copy-btn {
-            background-color: var(--text-main);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        .copy-btn:hover {
-            background-color: #3C2F2B;
-        }
-
         footer {
             text-align: center;
             padding: 30px;
@@ -194,29 +153,4 @@
         </ul>
     </nav>
 
-    <div class="contact-container">
-        <h1>聯絡我們與預約</h1>
-        <p class="subtitle">填寫下方表單，將預約資訊直接送達您的管理員信箱！</p>
-        
-        <form id="contact-form" onsubmit="handleMailSubmit(event)">
-            <div class="form-group">
-                <label for="name">您的姓名</label>
-                <input type="text" id="name" required placeholder="例如：k小姐">
-            </div>
-
-            <div class="form-group">
-                <label for="email">您的電子信箱</label>
-                <input type="email" id="email" required placeholder="your_email@example.com">
-            </div>
-
-            <div class="form-group">
-                <label for="phone">聯絡電話</label>
-                <input type="tel" id="phone" required placeholder="例如：0900-345-678">
-            </div>
-
-            <div class="form-group">
-                <label for="message">預約內容或想說的話</label>
-                <textarea id="message" rows="5" required placeholder="請輸入您想預約的時間、人數，或攜帶的毛小孩資訊..."></textarea>
-            </div>
-
-            <button type="submit" class
+    <div
