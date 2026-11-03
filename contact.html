@@ -132,6 +132,13 @@
             background-color: #D6956B;
         }
 
+        #form-status {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+            color: var(--primary-pink);
+        }
+
         footer {
             text-align: center;
             padding: 30px;
@@ -153,4 +160,80 @@
         </ul>
     </nav>
 
-    <div
+    <div class="contact-container">
+        <h1>聯絡我們與預約</h1>
+        <p class="subtitle">填寫下方表單，訊息將直接發送到管理員信箱！</p>
+        
+        <!-- 背景非同步發送表單 -->
+        <form id="ajax-form">
+            <!-- 隱欄位設定收件人與不跳轉網頁 -->
+            <input type="hidden" name="_subject" value="【Pawffee Cafe】收到新的預約與聯絡訊息！">
+            <input type="hidden" name="_template" value="table">
+
+            <div class="form-group">
+                <label for="name">您的姓名</label>
+                <input type="text" id="name" name="name" required placeholder="例如：林小姐">
+            </div>
+
+            <div class="form-group">
+                <label for="email">您的電子信箱</label>
+                <input type="email" id="email" name="email" required placeholder="your_email@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">聯絡電話</label>
+                <input type="tel" id="phone" name="phone" required placeholder="例如：0912-345-678">
+            </div>
+
+            <div class="form-group">
+                <label for="message">預約內容或想說的話</label>
+                <textarea id="message" name="message" rows="5" required placeholder="請輸入您想預約的時間、人數，或攜帶的毛小孩資訊..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submit-btn">送出預約與訊息</button>
+            <div id="form-status"></div>
+        </form>
+    </div>
+
+    <footer>
+        &copy; 2026 Pawffee Cafe 寵物友善咖啡廳 All Rights Reserved.
+    </footer>
+
+    <script>
+        const form = document.getElementById('ajax-form');
+        const statusDiv = document.getElementById('form-status');
+        const submitBtn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.7";
+            statusDiv.textContent = "正在透過伺服器發送信件...";
+
+            const formData = new FormData(form);
+
+            fetch("https://formsubmit.co/ajax/a0984030569@gmail.com", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    statusDiv.textContent = "✨ 發送成功！訊息已確實寄到您的管理員信箱！";
+                    form.reset();
+                } else {
+                    statusDiv.textContent = "❌ 發送失敗，請稍後再試。";
+                }
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = "1";
+            })
+            .catch(error => {
+                statusDiv.textContent = "❌ 發生錯誤，請檢查網路連線。";
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = "1";
+            });
+        });
+    </script>
+
+</body>
+</html>
